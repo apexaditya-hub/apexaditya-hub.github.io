@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #121212;
+  color: white;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: radial-gradient(circle at top, #1f1f1f, #000);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  color: #aaa;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #39FF14;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 0 15px #39FF14;
+}
+
+/* FORM */
+.lead-form input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.lead-form button {
+  padding: 10px;
+  background: #39FF14;
+  border: none;
+  border-radius: 5px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.dark {
+  background: #0d0d0d;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(57,255,20,0.3);
+}
+
+/* PRICING */
+.pricing {
+  border: 1px solid #39FF14;
+}
+
+/* FAQ */
+.faq {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+}
+
+/* WHATSAPP */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #39FF14;
+  padding: 15px;
+  border-radius: 50%;
+  color: black;
+}
