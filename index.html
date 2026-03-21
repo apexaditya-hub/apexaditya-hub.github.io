@@ -1,109 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex AI Trading</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<style>
+body {
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1 {
+    font-size:48px;
+    max-width:800px;
+}
+
+.hero p {
+    color:#aaa;
+    margin:20px 0;
+}
+
+/* TRUST */
+.trust {
+    color:#39FF14;
+    font-size:14px;
+    margin-top:15px;
+}
+
+/* BUTTON */
+.btn {
+    padding:15px 30px;
+    background:#39FF14;
+    color:#000;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* SECTION */
+.section {
+    padding:80px 10%;
+    text-align:center;
+}
+
+/* CARD */
+.card {
+    background:#111;
+    padding:30px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+/* FOOTER */
+footer {
+    padding:40px;
+    text-align:center;
+    color:#666;
+}
+</style>
 </head>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
+<h1>Consistent Monthly Returns Without Manual Trading</h1>
+<p>Apex AI executes high-probability trades using data, not emotions.</p>
 
-  <h1>Master the Markets with Mathematical Precision</h1>
-  <p>India’s most advanced AI Trading Bot. No emotions, no guesswork—just logic & data.</p>
+<button class="btn" onclick="goToForm()">Get Live Demo</button>
 
-  <!-- LEAD FORM -->
-  <form class="lead-form">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <button type="submit">Get Free Demo</button>
-  </form>
-
-  <a href="#" class="btn">Book a Live Demo</a>
-
+<div class="trust">
+✔ 5+ Years Backtested Data  
+✔ API Connected with Top Brokers  
+✔ Real-Time Execution  
+✔ Risk Managed Strategy
+</div>
 </section>
 
-<!-- WHY APEX -->
+<!-- PROOF -->
 <section class="section">
-  <h2>Why Apex AI?</h2>
+<h2>Real Data. Real Results.</h2>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Quantitative Logic</h3>
-      <p>Advanced mathematical models for high-probability trades.</p>
-    </div>
+<div class="card">
+<p>Live performance shared during demo call</p>
+</div>
 
-    <div class="card">
-      <h3>Backtested</h3>
-      <p>5+ years of historical market validation.</p>
-    </div>
-
-    <div class="card">
-      <h3>Instant Execution</h3>
-      <p>Zero latency execution faster than humans.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PERFORMANCE -->
-<section class="section dark">
-  <h2>Real Data. Real Results.</h2>
-
-  <img src="images/chart.png" class="chart">
-
-  <a href="#" class="btn">View Verified P&L</a>
-
-  <p class="disclaimer">
-    Trading involves risk. We focus on risk-management first.
-  </p>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section">
-  <h2>How It Works</h2>
-
-  <div class="grid">
-    <div class="card">Connect your broker securely</div>
-    <div class="card">Select your risk level</div>
-    <div class="card">Deploy & automate trading</div>
-  </div>
 </section>
 
 <!-- PRICING -->
-<section class="section pricing">
-  <h2>Elite Plan</h2>
-  <h3>₹30,000 / Month</h3>
+<section class="section">
+<h2>Elite Plan</h2>
 
-  <ul>
-    <li>Full Bot Access</li>
-    <li>Multi Segment Support</li>
-    <li>Real-time Risk Management</li>
-    <li>1-on-1 Onboarding</li>
-  </ul>
+<div class="card">
+<h3>₹30,000 / Month</h3>
+<p>For serious traders only</p>
+<p>Limited slots available</p>
 
-  <a href="#" class="btn">Start My Subscription</a>
+<button class="btn" onclick="goToForm()">Start Now</button>
+</div>
+
 </section>
 
 <!-- FAQ -->
 <section class="section">
-  <h2>FAQ</h2>
+<h2>FAQ</h2>
 
-  <div class="faq">
-    <p><b>Do I need laptop ON?</b><br>No, runs on cloud 24/7</p>
-    <p><b>Minimum capital?</b><br>₹5L+ recommended</p>
-    <p><b>Is money safe?</b><br>We never access funds</p>
-  </div>
+<div class="card">
+<p><b>Is this guaranteed profit?</b><br>No. We focus on probability and risk management.</p>
+</div>
+
 </section>
 
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">💬</a>
+<footer>
+© Apex AI Trading
+</footer>
+
+<script>
+function goToForm() {
+    window.open(https://docs.google.com/forms/d/e/1FAIpQLSelX_uYcV3LJ6XRtIEkMTH7KpS4fpE__jY9OBUF0i9S8fEUBQ/viewform?usp=header, "_blank");
+}
+</script>
 
 </body>
 </html>
