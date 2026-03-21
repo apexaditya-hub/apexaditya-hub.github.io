@@ -42,7 +42,7 @@ min-height:100vh;
 position:relative;
 }
 
-/* GRADIENT BACKGROUND */
+/* GRADIENT MESH */
 .hero::before{
 content:'';
 position:absolute;
@@ -53,6 +53,7 @@ top:-200px;
 left:-200px;
 opacity:0.3;
 filter:blur(120px);
+animation:move1 10s infinite alternate;
 }
 
 .hero::after{
@@ -65,22 +66,28 @@ bottom:-200px;
 right:-200px;
 opacity:0.3;
 filter:blur(120px);
+animation:move2 12s infinite alternate;
+}
+
+@keyframes move1{
+0%{transform:translate(0,0);}
+100%{transform:translate(80px,60px);}
+}
+
+@keyframes move2{
+0%{transform:translate(0,0);}
+100%{transform:translate(-60px,-80px);}
 }
 
 /* LEFT */
-.hero-left{
-max-width:500px;
-z-index:1;
-}
+.hero-left{max-width:500px;z-index:1;}
 
 .hero h1{
 font-size:56px;
 line-height:1.1;
 }
 
-.hero h1 span{
-color:#4f46e5;
-}
+.hero h1 span{color:#4f46e5;}
 
 .hero p{
 margin-top:20px;
@@ -101,6 +108,12 @@ padding:14px 26px;
 border-radius:10px;
 border:none;
 cursor:pointer;
+transition:0.3s;
+}
+
+.primary:hover{
+transform:translateY(-2px) scale(1.03);
+box-shadow:0 10px 30px rgba(255,255,255,0.2);
 }
 
 .secondary{
@@ -111,30 +124,27 @@ padding:14px 26px;
 border-radius:10px;
 }
 
-/* RIGHT */
-.hero-right{
-z-index:1;
+.secondary:hover{
+background:rgba(255,255,255,0.05);
 }
+
+/* RIGHT */
+.hero-right{z-index:1;}
 
 .floating-card{
 width:320px;
-padding:20px;
 border-radius:16px;
+overflow:hidden;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
 border:1px solid rgba(255,255,255,0.1);
-animation:float 4s ease-in-out infinite;
+animation:float 5s ease-in-out infinite;
 }
 
-/* FAKE CHART */
-.chart{
-height:120px;
-margin-top:10px;
-background:linear-gradient(120deg,#22c55e,#4f46e5);
-border-radius:10px;
+.floating-card img{
+width:100%;
+display:block;
 }
 
-/* FLOAT ANIMATION */
 @keyframes float{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-10px);}
@@ -158,6 +168,11 @@ padding:30px;
 background:rgba(255,255,255,0.03);
 border-radius:14px;
 border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
 }
 
 /* PRICING */
@@ -174,14 +189,20 @@ background:rgba(255,255,255,0.05);
 border-radius:16px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-.hero{
-flex-direction:column;
-text-align:center;
+/* SCROLL ANIMATION */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
 }
 
-.grid{
-grid-template-columns:1fr;
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
+
+/* MOBILE */
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center;}
+.grid{grid-template-columns:1fr;}
 }
