@@ -20,8 +20,9 @@
 <!-- HERO -->
 <section class="hero">
 
-<div class="hero-left">
+<div class="hero-left reveal">
 <h1>AI Trading.<br><span>Built for Precision.</span></h1>
+
 <p>Institution-grade execution engine designed to eliminate emotional trading.</p>
 
 <div class="cta">
@@ -30,32 +31,31 @@
 </div>
 </div>
 
-<div class="hero-right">
+<div class="hero-right reveal">
 <div class="floating-card">
-<p>📈 Live AI Dashboard</p>
-<div class="chart"></div>
+<img src="https://images.unsplash.com/photo-1642790551116-18e150f0b4c4" />
 </div>
 </div>
 
 </section>
 
 <!-- FEATURES -->
-<section class="features">
+<section class="features reveal">
 <h2>Engineered for Serious Traders</h2>
 
 <div class="grid">
 
-<div class="card">
+<div class="card reveal">
 <h3>Quant Logic</h3>
 <p>Mathematics-driven entries.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Backtested</h3>
 <p>5+ years validated performance.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Execution Speed</h3>
 <p>Millisecond-level trades.</p>
 </div>
@@ -64,10 +64,10 @@
 </section>
 
 <!-- PRICING -->
-<section class="pricing">
+<section class="pricing reveal">
 <h2>Elite Plan</h2>
 
-<div class="price-card">
+<div class="price-card reveal">
 <h3>₹30,000 / Month</h3>
 <p>For serious traders only</p>
 
@@ -75,10 +75,31 @@
 </div>
 </section>
 
+<footer>
+© Apex AI Trading
+</footer>
+
 <script>
-function goToForm(){
-window.open("YOUR_GOOGLE_FORM_LINK","_blank");
+
+/* SCROLL ANIMATION */
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+for(let i=0;i<reveals.length;i++){
+let windowHeight = window.innerHeight;
+let elementTop = reveals[i].getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+reveals[i].classList.add("active");
 }
+}
+});
+
+/* CTA */
+function goToForm(){
+window.open(https://forms.gle/Rr5EbqK2YR8LVqTQ6,"_blank");
+}
+
 </script>
 
 </body>
