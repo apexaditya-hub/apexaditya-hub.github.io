@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex AI Trading | 15-20% Monthly Returns Guaranteed</title>
-    //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    //cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        /* ULTRA PREMIUM 2026 LUXURY DESIGN */
+        /* ULTRA PREMIUM 2026 LUXURY DESIGN - COMPLETE */
         :root {
             --gold: #D4AF37; --gold-dark: #B8972E;
             --primary-gradient: linear-gradient(135deg, #00d4aa 0%, #00b894 50%, #00a085 100%);
@@ -27,7 +27,7 @@
             position: relative;
         }
 
-        /* GOLDEN PARTICLES BACKGROUND */
+        /* GOLDEN PARTICLES */
         body::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
@@ -40,7 +40,7 @@
         }
         @keyframes sparkle { 100% { transform: translateX(100px) translateY(100px); } }
 
-        /* NAVBAR - LUXURY GOLD */
+        /* NAVBAR */
         .nav {
             position: fixed; top: 0; width: 100%; z-index: 1000; backdrop-filter: blur(30px);
             display: flex; justify-content: space-between; align-items: center;
@@ -60,7 +60,7 @@
         }
         @keyframes pulse-gold { 0%,100%{box-shadow:0 8px 25px rgba(212,175,55,0.4);} 50%{box-shadow:0 8px 35px rgba(212,175,55,0.6);} }
 
-        /* HERO - CINEMATIC */
+        /* HERO */
         .hero {
             min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
             padding: 140px 6% 80px; position: relative; overflow: hidden;
@@ -89,16 +89,13 @@
         .hero-stats {
             display: flex; gap: 2.5rem; margin: 3rem 0; flex-wrap: wrap;
         }
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
         .stat-number {
             font-size: 2.2rem; font-weight: 800; background: var(--primary-gradient);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
         .stat-label { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: 0.3rem; }
 
-        /* CTA BUTTONS - LUXURY */
         .cta-group { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
         .btn-premium {
             padding: 1.3rem 3rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem;
@@ -117,7 +114,6 @@
         }
         .btn-glass:hover { background: rgba(212,175,55,0.25); transform: translateY(-3px); }
 
-        /* CHART - PREMIUM DASHBOARD */
         .hero-chart { position: relative; z-index: 3; flex: 1; max-width: 550px; }
         .chart-container {
             width: 480px; height: 600px; margin: 0 auto; border-radius: 30px; overflow: hidden;
@@ -136,7 +132,7 @@
         }
         .tradingview-widget { width: 100%; height: 100%; border-radius: 28px; }
 
-        /* SECTIONS - LUXURY */
+        /* SECTIONS */
         section {
             padding: 120px 6%; max-width: 1600px; margin: 0 auto; position: relative; z-index: 2;
         }
@@ -147,7 +143,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* METRICS - GOLD CARDS */
+        /* METRICS */
         .metrics-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
         }
@@ -168,7 +164,7 @@
         .metric-value { font-size: 3rem; font-weight: 800; background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
         .metric-label { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
 
-        /* PRICING - PREMIUM TABS */
+        /* PRICING */
         .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
         .plan {
             background: var(--card-bg); border-radius: 30px; border: 2px solid rgba(212,175,55,0.15);
@@ -189,6 +185,7 @@
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 2rem;
         }
+        .plan-features { list-style: none; margin: 2rem 0; }
         .plan-features li {
             display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
             font-size: 1.1rem; font-weight: 500; color: var(--text-muted);
@@ -200,7 +197,7 @@
         }
         .plan-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(212,175,55,0.5); }
 
-        /* FORM - LUXURY */
+        /* FORM */
         .waitlist-form {
             max-width: 750px; margin: 0 auto; background: var(--card-bg);
             backdrop-filter: blur(30px); padding: 5rem; border-radius: 40px;
@@ -215,6 +212,26 @@
             font-size: 1.3rem; color: var(--text-gold); font-weight: 600; margin-bottom: 3.5rem;
             text-shadow: 0 2px 20px rgba(212,175,55,0.5);
         }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { position: relative; }
+        .form-group input {
+            width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff;
+            font-size: 1rem; backdrop-filter: blur(20px);
+        }
+        .form-group input::placeholder { color: rgba(255,255,255,0.6); }
+        .form-group input:focus { outline: none; border-color: var(--gold); }
+        .form-icon {
+            position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%);
+            color: var(--gold); font-size: 1.1rem; z-index: 2;
+        }
+        .form-group.full { grid-column: 1/-1; }
+        .form-submit {
+            width: 100%; padding: 1.5rem; border-radius: 20px; background: var(--luxury-gradient);
+            color: #000; border: none; font-size: 1.2rem; font-weight: 700; font-family: 'Playfair Display', serif;
+            margin-top: 2rem; cursor: pointer; transition: all 0.4s ease;
+        }
+        .form-submit:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(212,175,55,0.5); }
 
         /* ANIMATIONS */
         .reveal { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.4,0,0.2,1); }
@@ -228,6 +245,7 @@
             .chart-container { width: 100%; max-width: 400px; height: 450px; }
             section { padding: 80px 5%; }
             .hero-stats { justify-content: center; gap: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -322,9 +340,9 @@
                 <h3>Starter</h3>
                 <div class="plan-price">$97<span>/month</span></div>
                 <ul class="plan-features">
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> 5 Major Pairs</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Signal Alerts</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Email Support</li>
+                    <li><i class="fas fa-check" style="color: var(--gold);"></i> 5 Major Pairs</li>
+                    <li><i class="fas fa-check" style="color: var(--gold);"></i> Signal Alerts</li>
+                    <li><i class="fas fa-check" style="color: var(--gold);"></i> Email Support</li>
                 </ul>
                 <button class="plan-btn" onclick="scrollToWaitlist()">Start Free Trial</button>
             </div>
@@ -332,46 +350,5 @@
                 <h3>Pro Trader</h3>
                 <div class="plan-price">$297<span>/month</span></div>
                 <ul class="plan-features">
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> All 28 Pairs</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> MT4/MT5 Auto</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Priority Support</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Custom Risk</li>
-                </ul>
-                <button class="plan-btn" onclick="scrollToWaitlist()">Most Popular</button>
-            </div>
-            <div class="plan reveal">
-                <h3>Enterprise</h3>
-                <div class="plan-price">$997<span>/month</span></div>
-                <ul class="plan-features">
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Unlimited Accounts</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> FIX API Access</li>
-                    ><i class="fas fa-check" style="color: var(--gold);"></i> Dedicated Server</li>
-                </ul>
-                <button class="plan-btn" onclick="scrollToWaitlist()">Contact Sales</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- WAITLIST FORM -->
-    <section class="waitlist" id="waitlist">
-        <div class="waitlist-form reveal">
-            <h2>Deploy Your Apex AI Bot</h2>
-            <p class="urgency">⚡ Join 1,847+ Pro Traders | Only 23 Spots Left This Month</p>
-            <form id="waitlistForm">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                    <div style="position: relative;">
-                        <i class="fas fa-user" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
-                        <input type="text" placeholder="Full Name *" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
-                    </div>
-                    <div style="position: relative;">
-                        <i class="fas fa-envelope" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
-                        <input type="email" placeholder="Trading Email *" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                    <div style="position: relative;">
-                        <i class="fas fa-dollar-sign" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
-                        <input type="text" placeholder="Account Size ($)" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
-                    </div>
-                    <div style="position: relative;">
-                        <i class="fas fa-globe" style="position: absolute; left: 1.2rem; top: 50%;
+                    <li><i class="fas fa-check" style="color: var(--gold);"></i> All 28 Pairs</li>
+                    <li><i class
