@@ -5,25 +5,196 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apex AI</title>
 
-<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0a0a0f;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+z-index:10;
+}
+
+.nav button{
+padding:10px 18px;
+border:none;
+background:#fff;
+color:#000;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:140px 10%;
+min-height:100vh;
+position:relative;
+}
+
+/* BACKGROUND BLOBS */
+.hero::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#4f46e5,transparent 60%);
+top:-200px;
+left:-200px;
+filter:blur(120px);
+opacity:0.3;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#22c55e,transparent 60%);
+bottom:-200px;
+right:-200px;
+filter:blur(120px);
+opacity:0.3;
+}
+
+/* TEXT */
+.hero-left{
+max-width:500px;
+z-index:1;
+}
+
+.hero h1{
+font-size:52px;
+line-height:1.1;
+}
+
+.hero h1 span{
+color:#4f46e5;
+}
+
+.hero p{
+margin-top:20px;
+color:#aaa;
+}
+
+/* CTA */
+.cta{
+margin-top:30px;
+display:flex;
+gap:15px;
+}
+
+.primary{
+background:#fff;
+color:#000;
+padding:14px 26px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+}
+
+.secondary{
+background:transparent;
+border:1px solid rgba(255,255,255,0.2);
+color:#fff;
+padding:14px 26px;
+border-radius:10px;
+}
+
+/* RIGHT CARD */
+.floating-card{
+width:300px;
+border-radius:16px;
+overflow:hidden;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+animation:float 5s infinite ease-in-out;
+}
+
+.floating-card img{
+width:100%;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* FEATURES */
+.features{
+padding:100px 10%;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+padding:30px;
+background:rgba(255,255,255,0.03);
+border-radius:14px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* PRICING */
+.pricing{
+padding:100px 10%;
+text-align:center;
+background:#0f172a;
+}
+
+.price-card{
+margin-top:30px;
+padding:40px;
+background:rgba(255,255,255,0.05);
+border-radius:16px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center;}
+.grid{grid-template-columns:1fr;}
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<header class="nav">
-<div class="logo">Apex AI</div>
-<button class="nav-btn" onclick="goToForm()">Get Access</button>
-</header>
+<div class="nav">
+<div>Apex AI</div>
+<button onclick="goToForm()">Get Access</button>
+</div>
 
-<!-- HERO -->
 <section class="hero">
 
-<div class="hero-left reveal">
+<div class="hero-left">
 <h1>AI Trading.<br><span>Built for Precision.</span></h1>
 
-<p>Institution-grade execution engine designed to eliminate emotional trading.</p>
+<p>Trade with logic, speed, and data. No emotions. No guesswork.</p>
 
 <div class="cta">
 <button class="primary" onclick="goToForm()">Book Demo</button>
@@ -31,75 +202,38 @@
 </div>
 </div>
 
-<div class="hero-right reveal">
+<div class="hero-right">
 <div class="floating-card">
-<img src="https://images.unsplash.com/photo-1642790551116-18e150f0b4c4" />
+<img src="https://images.unsplash.com/photo-1642790551116-18e150f0b4c4">
 </div>
 </div>
 
 </section>
 
-<!-- FEATURES -->
-<section class="features reveal">
-<h2>Engineered for Serious Traders</h2>
+<section class="features">
+<h2>Why Apex AI</h2>
 
 <div class="grid">
-
-<div class="card reveal">
-<h3>Quant Logic</h3>
-<p>Mathematics-driven entries.</p>
-</div>
-
-<div class="card reveal">
-<h3>Backtested</h3>
-<p>5+ years validated performance.</p>
-</div>
-
-<div class="card reveal">
-<h3>Execution Speed</h3>
-<p>Millisecond-level trades.</p>
-</div>
-
+<div class="card">Quant-based entries</div>
+<div class="card">Backtested strategies</div>
+<div class="card">Fast execution</div>
 </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing reveal">
+<section class="pricing">
 <h2>Elite Plan</h2>
 
-<div class="price-card reveal">
+<div class="price-card">
 <h3>₹30,000 / Month</h3>
 <p>For serious traders only</p>
-
 <button onclick="goToForm()">Start Now</button>
 </div>
 </section>
 
-<footer>
-© Apex AI Trading
-</footer>
-
 <script>
-
-/* SCROLL ANIMATION */
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll", () => {
-for(let i=0;i<reveals.length;i++){
-let windowHeight = window.innerHeight;
-let elementTop = reveals[i].getBoundingClientRect().top;
-
-if(elementTop < windowHeight - 100){
-reveals[i].classList.add("active");
-}
-}
-});
-
-/* CTA */
 function goToForm(){
-window.open(https://forms.gle/MpRW79QwKkkXZHDj8,"_blank");
+window.open("https://google.com","_blank");
 }
-
 </script>
 
 </body>
