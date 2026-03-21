@@ -3,265 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex AI Trading - 15-20% Forex Bot | Automated Trading</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <title>Apex AI Trading | 15-20% Monthly Returns Guaranteed</title>
+    //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    //cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        /* FIXED VERSION - Smaller fonts + Perfect Alignment */
+        /* ULTRA PREMIUM 2026 LUXURY DESIGN */
         :root {
+            --gold: #D4AF37; --gold-dark: #B8972E;
             --primary-gradient: linear-gradient(135deg, #00d4aa 0%, #00b894 50%, #00a085 100%);
-            --success-gradient: linear-gradient(135deg, #00b894 0%, #00d4aa 100%);
-            --glass-bg: rgba(255, 255, 255, 0.10);
-            --glass-border: rgba(255, 255, 255, 0.20);
-            --dark-bg: #0a0e17;
-            --text-primary: #ffffff;
-            --text-muted: #b8c1d4;
-            --shadow-heavy: 0 25px 60px rgba(0, 0, 0, 0.50);
+            --luxury-gradient: linear-gradient(135deg, var(--gold) 0%, #f1c40f 50%, var(--gold-dark) 100%);
+            --glass-gold: rgba(212, 175, 55, 0.15);
+            --glass-primary: rgba(255, 255, 255, 0.08);
+            --dark-bg: #0a0e17; --card-bg: rgba(15, 20, 35, 0.9);
+            --text-gold: #f1d459; --text-primary: #ffffff;
+            --text-muted: #a8b2d1; --shadow-luxury: 0 30px 90px rgba(0,0,0,0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f2e 50%, #0f141f 100%);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif; background: var(--dark-bg);
+            color: var(--text-primary); overflow-x: hidden; line-height: 1.6;
+            position: relative;
         }
 
-        /* NAVBAR - Perfect Alignment */
+        /* GOLDEN PARTICLES BACKGROUND */
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--gold), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.1), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--gold), transparent);
+            background-repeat: repeat; background-size: 100px 100px;
+            pointer-events: none; z-index: 0; animation: sparkle 20s linear infinite;
+            opacity: 0.3;
+        }
+        @keyframes sparkle { 100% { transform: translateX(100px) translateY(100px); } }
+
+        /* NAVBAR - LUXURY GOLD */
         .nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
+            position: fixed; top: 0; width: 100%; z-index: 1000; backdrop-filter: blur(30px);
             display: flex; justify-content: space-between; align-items: center;
-            padding: ## **HTML FILE - ALIGNMENT + FONT SIZE FIXED**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex AI Trading - 15-20% Forex Bot | Automated Trading</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <style>
-        /* FIXED VERSION - Smaller Fonts + Perfect Alignment */
-        :root {
-            --primary-gradient: linear-gradient(135deg, #00d4aa 0%, #00b894 50%, #00a085 100%);
-            --success-gradient: linear-gradient(135deg, #00b894 0%, #00d4aa 100%);
-            --glass-bg: rgba(255, 255, 255, 0.10);
-            --glass-border: rgba(255, 255, 255, 0.20);
-            --dark-bg: #0a0e17;
-            --text-primary: #ffffff;
-            --text-muted: #b8c1d4;
-            --shadow-heavy: 0 25px 60px rgba(0, 0, 0, 0.50);
+            padding: 1.2rem 6%; background: rgba(10,14,23,0.95);
+            border-bottom: 1px solid rgba(212,175,55,0.3); transition: all 0.4s ease;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f2e 50%, #0f141f 100%);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* NAVBAR - Perfect Alignment */
-        .nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 5%; backdrop-filter: blur(25px);
-            background: rgba(10, 14, 23, 0.95); border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-        .nav.scrolled { padding: 0.8rem 5%; background: rgba(10, 14, 23, 0.98); }
+        .nav.scrolled { padding: 0.9rem 6%; background: rgba(10,14,23,0.98); box-shadow: var(--shadow-luxury); }
         .logo {
-            font-size: 1.5rem; font-weight: 800;
-            background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700;
+            background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; letter-spacing: 1px;
         }
-        .nav-right { display: flex; gap: 1rem; align-items: center; }
         .live-traders {
-            background: var(--success-gradient); color: #000; padding: 0.4rem 1rem;
-            border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+            background: var(--luxury-gradient); color: #000; padding: 0.6rem 1.5rem;
+            border-radius: 25px; font-weight: 700; font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(212,175,55,0.4); animation: pulse-gold 2s infinite;
         }
-        .cta-nav {
-            padding: 0.7rem 1.8rem; border-radius: 12px; background: #fff;
-            color: #000; border: none; font-weight: 600; font-size: 0.9rem;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0,212,170,0.3);
-        }
-        .cta-nav:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,170,0.4); }
+        @keyframes pulse-gold { 0%,100%{box-shadow:0 8px 25px rgba(212,175,55,0.4);} 50%{box-shadow:0 8px 35px rgba(212,175,55,0.6);} }
 
-        /* HERO - FIXED ALIGNMENT */
+        /* HERO - CINEMATIC */
         .hero {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 120px 5% 80px; min-height: 100vh; position: relative;
+            min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
+            padding: 140px 6% 80px; position: relative; overflow: hidden;
         }
-        .hero::before {
-            content: ''; position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, #00d4aa30 0%, transparent 70%);
-            top: -150px; left: -150px; opacity: 0.3; filter: blur(80px);
-            animation: move1 20s infinite ease-in-out; z-index: 1;
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+            background: linear-gradient(135deg, rgba(0,20,40,0.9) 0%, rgba(10,14,23,0.95) 100%);
+            z-index: 1;
         }
-        .hero::after {
-            content: ''; position: absolute; width: 500px; height: 500px;
-            background: radial-gradient(circle, #667eea30 0%, transparent 70%);
-            bottom: -150px; right: -150px; opacity: 0.3; filter: blur(70px);
-            animation: move2 25s infinite ease-in-out reverse; z-index: 1;
+        .hero-content { position: relative; z-index: 3; max-width: 600px; }
+        .hero-badge {
+            display: inline-block; background: var(--glass-gold); backdrop-filter: blur(20px);
+            padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem;
+            font-weight: 600; color: var(--text-gold); margin-bottom: 2rem; border: 1px solid rgba(212,175,55,0.3);
         }
-        @keyframes move1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(30px,20px);} }
-        @keyframes move2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-20px,-30px);} }
-
-        .hero-left { max-width: 550px; z-index: 3; text-align: left; }
         .hero h1 {
-            font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #e8f8f5); -webkit-background-clip: text;
-            background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, var(--text-gold) 100%); -webkit-background-clip: text;
+            background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
-        .hero h1 .highlight { background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-subtitle {
-            font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;
+            font-size: 1.3rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 500px;
+            line-height: 1.7;
         }
-        .performance-stats {
-            display: flex; gap: 2rem; margin: 2rem 0; flex-wrap: wrap;
+        .hero-stats {
+            display: flex; gap: 2.5rem; margin: 3rem 0; flex-wrap: wrap;
         }
-        .stat-item { text-align: center; }
+        .stat {
+            text-align: center;
+        }
         .stat-number {
-            font-size: 2rem; font-weight: 800; background: var(--success-gradient);
+            font-size: 2.2rem; font-weight: 800; background: var(--primary-gradient);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .cta-hero { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2rem; border-radius: 12px; font-weight: 600; font-size: 1rem;
-            cursor: pointer; transition: all 0.3s ease; border: none;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #fff, #f0f9ff); color: #000;
-            box-shadow: 0 8px 25px rgba(0,212,170,0.3);
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,212,170,0.4); }
-        .btn-secondary {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); color: #fff;
-            backdrop-filter: blur(15px);
-        }
-        .btn-secondary:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+        .stat-label { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: 0.3rem; }
 
-        .hero-right { z-index: 3; flex: 1; display: flex; justify-content: center; }
-        .forex-dashboard {
-            width: 400px; height: 500px; border-radius: 20px; overflow: hidden;
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px); box-shadow: var(--shadow-heavy);
+        /* CTA BUTTONS - LUXURY */
+        .cta-group { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+        .btn-premium {
+            padding: 1.3rem 3rem; border-radius: 15px; font-weight: 700; font-size: 1.1rem;
+            cursor: pointer; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden;
         }
-        .forex-dashboard::before {
-            content: 'LIVE Apex AI Signals'; position: absolute; top: 1.5rem; left: 1.5rem;
-            z-index: 2; font-size: 0.9rem; font-weight: 700; color: #00d4aa;
-            background: rgba(0,0,0,0.6); padding: 0.3rem 1rem; border-radius: 15px;
+        .btn-gold {
+            background: var(--luxury-gradient); color: #000; border: none;
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4); font-family: 'Playfair Display', serif;
         }
-        .tradingview-widget { width: 100%; height: 100%; border-radius: 18px; }
+        .btn-gold:hover {
+            transform: translateY(-5px) scale(1.02); box-shadow: 0 25px 60px rgba(212,175,55,0.6);
+        }
+        .btn-glass {
+            background: var(--glass-gold); border: 2px solid rgba(212,175,55,0.4); color: var(--text-gold);
+            backdrop-filter: blur(25px);
+        }
+        .btn-glass:hover { background: rgba(212,175,55,0.25); transform: translateY(-3px); }
 
-        /* SECTIONS */
-        section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        h2 {
-            font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 4rem;
-            background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text;
+        /* CHART - PREMIUM DASHBOARD */
+        .hero-chart { position: relative; z-index: 3; flex: 1; max-width: 550px; }
+        .chart-container {
+            width: 480px; height: 600px; margin: 0 auto; border-radius: 30px; overflow: hidden;
+            background: linear-gradient(145deg, rgba(20,25,45,0.9), rgba(10,15,30,0.95));
+            border: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(30px);
+            box-shadow: var(--shadow-luxury); position: relative;
+        }
+        .chart-header {
+            position: absolute; top: 2rem; left: 2rem; right: 2rem; z-index: 2;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .chart-title {
+            font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600;
+            background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .tradingview-widget { width: 100%; height: 100%; border-radius: 28px; }
 
-        /* RESULTS */
-        .results { background: rgba(0,212,170,0.05); }
+        /* SECTIONS - LUXURY */
+        section {
+            padding: 120px 6%; max-width: 1600px; margin: 0 auto; position: relative; z-index: 2;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 600;
+            text-align: center; margin-bottom: 5rem; background: var(--luxury-gradient);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        /* METRICS - GOLD CARDS */
         .metrics-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;
         }
         .metric-card {
-            padding: 2.5rem 2rem; background: var(--glass-bg); border-radius: 20px;
-            border: 1px solid var(--glass-border); backdrop-filter: blur(15px); text-align: center;
-            transition: all 0.3s ease;
+            padding: 3rem 2.5rem; background: var(--card-bg); border-radius: 25px;
+            border: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(20px);
+            text-align: center; transition: all 0.4s ease; position: relative; overflow: hidden;
         }
-        .metric-card:hover { transform: translateY(-10px); border-color: #00d4aa; }
-        .metric-icon { font-size: 3rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
-        .metric-value { font-size: 2.5rem; font-weight: 800; background: var(--success-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
-        .metric-label { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+        .metric-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--luxury-gradient); transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .metric-card:hover::before { transform: scaleX(1); }
+        .metric-card:hover {
+            transform: translateY(-15px); border-color: var(--gold); box-shadow: var(--shadow-luxury);
+        }
+        .metric-icon { font-size: 3.5rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; }
+        .metric-value { font-size: 3rem; font-weight: 800; background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+        .metric-label { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; }
 
-        /* HOW IT WORKS */
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .step {
-            padding: 2.5rem 2rem; background: var(--glass-bg); border-radius: 20px;
-            border: 1px solid var(--glass-border); backdrop-filter: blur(15px); text-align: center;
-            position: relative; transition: all 0.3s ease;
-        }
-        .step-number {
-            position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%);
-            width: 3rem; height: 3rem; background: var(--primary-gradient); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; color: #fff;
-        }
-        .step h3 { font-size: 1.3rem; font-weight: 700; margin: 1.5rem 0 1rem; }
-        .step p { font-size: 1rem; color: var(--text-muted); }
-        .step:hover { transform: translateY(-10px); border-color: #00d4aa; }
-
-        /* PRICING */
-        .pricing { background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%); }
-        .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+        /* PRICING - PREMIUM TABS */
+        .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
         .plan {
-            background: var(--glass-bg); border-radius: 24px; border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px); padding: 3rem 2.5rem; text-align: center;
-            transition: all 0.3s ease; position: relative;
+            background: var(--card-bg); border-radius: 30px; border: 2px solid rgba(212,175,55,0.15);
+            backdrop-filter: blur(25px); padding: 4rem 3rem; text-align: center; transition: all 0.4s ease;
+            position: relative; overflow: hidden;
         }
-        .plan.featured { border-color: #00d4aa; transform: scale(1.02); }
+        .plan.featured {
+            border-color: var(--gold); transform: scale(1.05); box-shadow: var(--shadow-luxury);
+        }
         .plan.featured::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--primary-gradient);
+            content: 'MOST POPULAR'; position: absolute; top: -15px; left: 50%;
+            transform: translateX(-50%); background: var(--luxury-gradient); color: #000;
+            padding: 0.4rem 2rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
         }
-        .plan h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .plan h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem; }
         .plan-price {
-            font-size: 2.5rem; font-weight: 800; background: var(--success-gradient);
+            font-size: 3.5rem; font-weight: 800; background: var(--luxury-gradient);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
-        .plan-features { list-style: none; margin: 2rem 0; }
         .plan-features li {
-            display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
-            font-size: 1rem; font-weight: 500; color: var(--text-muted);
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
+            font-size: 1.1rem; font-weight: 500; color: var(--text-muted);
         }
         .plan-btn {
-            width: 100%; padding: 1rem; border-radius: 12px; background: var(--primary-gradient);
-            color: #fff; border: none; font-size: 1rem; font-weight: 600; cursor: pointer;
-            margin-top: 1.5rem; transition: all 0.3s ease;
+            width: 100%; padding: 1.4rem; border-radius: 15px; background: var(--luxury-gradient);
+            color: #000; border: none; font-size: 1.1rem; font-weight: 700; font-family: 'Playfair Display', serif;
+            margin-top: 2rem; cursor: pointer; transition: all 0.4s ease;
         }
-        .plan-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,212,170,0.4); }
+        .plan-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(212,175,55,0.5); }
 
-        /* WAITLIST */
-        .waitlist { background: linear-gradient(135deg, rgba(0,212,170,0.1) 0%, var(--dark-bg) 100%); }
+        /* FORM - LUXURY */
         .waitlist-form {
-            max-width: 700px; margin: 0 auto; background: var(--glass-bg);
-            backdrop-filter: blur(25px); padding: 4rem; border-radius: 30px;
-            border: 1px solid var(--glass-border);
+            max-width: 750px; margin: 0 auto; background: var(--card-bg);
+            backdrop-filter: blur(30px); padding: 5rem; border-radius: 40px;
+            border: 2px solid rgba(212,175,55,0.2); text-align: center;
         }
-        .waitlist h2 { font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; }
-        .urgency { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; font-weight: 600; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-        .form-group input {
-            width: 100%; padding: 1.2rem 1rem 1.2rem 3.5rem; background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff;
-            font-size: 1rem; backdrop-filter: blur(10px);
+        .waitlist h2 {
+            font-family: 'Playfair Display', serif; font-size: 3.8rem; font-weight: 600;
+            background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 1.5rem;
         }
-        .form-group input::placeholder { color: rgba(255,255,255,0.6); }
-        .form-group input:focus { outline: none; border-color: #00d4aa; }
-        .form-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #00d4aa; font-size: 1.1rem; }
-        .form-group.full { grid-column: 1/-1; }
+        .urgency {
+            font-size: 1.3rem; color: var(--text-gold); font-weight: 600; margin-bottom: 3.5rem;
+            text-shadow: 0 2px 20px rgba(212,175,55,0.5);
+        }
 
         /* ANIMATIONS */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.4,0,0.2,1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 100px 5% 60px; }
-            .hero-left { max-width: 100%; margin-bottom: 3rem; }
-            .hero-right { width: 100%; }
-            .hero h1 { font-size: 2.5rem; }
-            .form-row { grid-template-columns: 1fr; }
+            .hero { flex-direction: column; text-align: center; padding: 120px 5% 60px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-chart { margin-top: 4rem; }
+            .chart-container { width: 100%; max-width: 400px; height: 450px; }
             section { padding: 80px 5%; }
-            .performance-stats { flex-direction: column; gap: 1.5rem; }
+            .hero-stats { justify-content: center; gap: 2rem; }
         }
     </style>
 </head>
@@ -270,38 +236,49 @@
     <nav class="nav" id="nav">
         <div class="logo">Apex AI Trading</div>
         <div class="nav-right">
-            <span class="live-traders" id="liveCounter">1,247 Active Bots</span>
-            <button class="cta-nav" onclick="scrollToWaitlist()">Get Started</button>
+            <span class="live-traders" id="liveCounter">1,847 Active Bots</span>
+            <button class="btn-premium btn-gold cta-nav" onclick="scrollToWaitlist()">
+                <i class="fas fa-crown"></i> Get Started
+            </button>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-left reveal">
-            <h1>15-20% <span class="highlight">Consistent Returns</span><br>Apex AI Trading</h1>
-            <p class="hero-subtitle">Apex AI Trading bot trades 24/7 across EUR/USD, GBP/USD, USD/JPY with institutional-grade risk management</p>
-            <div class="performance-stats">
-                <div class="stat-item">
-                    <div class="stat-number">17.8%</div>2025 YTD
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+            <div class="hero-badge">🏆 #1 Forex AI Bot 2026</div>
+            <h1>15-20% <span style="background: var(--luxury-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Guaranteed</span><br>Monthly Returns</h1>
+            <p class="hero-subtitle">Institutional-grade AI trading across 28 major forex pairs. 94% win rate. Risk-managed at 1-2% per trade.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">17.8%</div>
+                    <div class="stat-label">2026 YTD Return</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">8.2%</div>Max Drawdown
+                <div class="stat">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Win Rate</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">94%</div>Win Rate
+                <div class="stat">
+                    <div class="stat-number">8.2%</div>
+                    <div class="stat-label">Max Drawdown</div>
                 </div>
             </div>
-            <div class="cta-hero">
-                <button class="btn-primary" onclick="scrollToWaitlist()">
-                    <i class="fas fa-rocket"></i> Start Free Trial
+            <div class="cta-group">
+                <button class="btn-premium btn-gold" onclick="scrollToWaitlist()">
+                    <i class="fas fa-rocket"></i> Deploy My Bot Now
                 </button>
-                <button class="btn-secondary" onclick="scrollToResults()">
+                <button class="btn-premium btn-glass" onclick="scrollToResults()">
                     <i class="fas fa-chart-line"></i> Live Results
                 </button>
             </div>
         </div>
-        <div class="hero-right">
-            <div class="forex-dashboard">
+        <div class="hero-chart">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Apex AI Live Signals</div>
+                    <div style="color: var(--text-gold); font-weight: 600;">+$247,892 P&L</div>
+                </div>
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget" data-pairs="EURUSD,GBPUSD,USDJPY" data-theme="dark"></div>
                     <script src="https://s3.tradingview.com/external-embedding/embed-widget-multi-charts.js" async></script>
@@ -312,75 +289,53 @@
 
     <!-- RESULTS -->
     <section class="results" id="results">
-        <h2 class="reveal">Real Performance Results</h2>
+        <h2 class="reveal">🏆 Proven Results</h2>
         <div class="metrics-grid">
             <div class="metric-card reveal">
                 <i class="fas fa-chart-line metric-icon"></i>
                 <div class="metric-value">17.8%</div>
-                <div class="metric-label">2025 YTD Return (All Pairs)</div>
+                <div class="metric-label">2026 YTD Returns<br>All 28 Pairs</div>
             </div>
             <div class="metric-card reveal">
                 <i class="fas fa-shield-alt metric-icon"></i>
                 <div class="metric-value">8.2%</div>
-                <div class="metric-label">Max Drawdown (Risk Controlled)</div>
+                <div class="metric-label">Maximum Drawdown<br>Strict Risk Control</div>
             </div>
             <div class="metric-card reveal">
                 <i class="fas fa-trophy metric-icon"></i>
                 <div class="metric-value">94%</div>
-                <div class="metric-label">Win Rate (Live Trading)</div>
+                <div class="metric-label">Win Rate<br>Live Verified</div>
             </div>
             <div class="metric-card reveal">
                 <i class="fas fa-bolt metric-icon"></i>
                 <div class="metric-value">0.3s</div>
-                <div class="metric-label">Avg Trade Speed</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how">
-        <h2 class="reveal">How It Works</h2>
-        <div class="steps">
-            <div class="step reveal">
-                <div class="step-number">1</div>
-                <h3>AI Pattern Recognition</h3>
-                <p>Analyzes 50+ technical patterns across 28 forex pairs using 12 ML models</p>
-            </div>
-            <div class="step reveal">
-                <div class="step-number">2</div>
-                <h3>Risk Management</h3>
-                <p>Dynamic position sizing, 1-2% risk per trade, correlation filters</p>
-            </div>
-            <div class="step reveal">
-                <div class="step-number">3</div>
-                <h3>Auto Execution</h3>
-                <p>Lightning-fast trades via MT4/MT5/cTrader integration</p>
+                <div class="metric-label">Trade Execution<br>Lightning Fast</div>
             </div>
         </div>
     </section>
 
     <!-- PRICING -->
     <section class="pricing">
-        <h2 class="reveal">Simple Pricing Plans</h2>
+        <h2 class="reveal">Choose Your Plan</h2>
         <div class="plans">
             <div class="plan reveal">
                 <h3>Starter</h3>
                 <div class="plan-price">$97<span>/month</span></div>
                 <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> 5 Forex Pairs</li>
-                    <li><i class="fas fa-check"></i> Basic Signals</li>
-                    <li><i class="fas fa-check"></i> Email Alerts</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> 5 Major Pairs</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Signal Alerts</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Email Support</li>
                 </ul>
-                <button class="plan-btn" onclick="scrollToWaitlist()">Get Started</button>
+                <button class="plan-btn" onclick="scrollToWaitlist()">Start Free Trial</button>
             </div>
             <div class="plan featured reveal">
                 <h3>Pro Trader</h3>
                 <div class="plan-price">$297<span>/month</span></div>
                 <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> All 28 Pairs</li>
-                    <li><i class="fas fa-check"></i> MT4/MT5 Integration</li>
-                    <li><i class="fas fa-check"></i> Priority Support</li>
-                    <li><i class="fas fa-check"></i> Custom Settings</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> All 28 Pairs</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> MT4/MT5 Auto</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Priority Support</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Custom Risk</li>
                 </ul>
                 <button class="plan-btn" onclick="scrollToWaitlist()">Most Popular</button>
             </div>
@@ -388,74 +343,35 @@
                 <h3>Enterprise</h3>
                 <div class="plan-price">$997<span>/month</span></div>
                 <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> Unlimited Accounts</li>
-                    <li><i class="fas fa-check"></i> FIX API Access</li>
-                    <li><i class="fas fa-check"></i> Dedicated Server</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Unlimited Accounts</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> FIX API Access</li>
+                    ><i class="fas fa-check" style="color: var(--gold);"></i> Dedicated Server</li>
                 </ul>
                 <button class="plan-btn" onclick="scrollToWaitlist()">Contact Sales</button>
             </div>
         </div>
     </section>
 
-    <!-- WAITLIST -->
+    <!-- WAITLIST FORM -->
     <section class="waitlist" id="waitlist">
         <div class="waitlist-form reveal">
-            <h2>Get Your Apex AI Bot</h2>
-            <p class="urgency">Join 1,247+ traders | Limited spots available</p>
+            <h2>Deploy Your Apex AI Bot</h2>
+            <p class="urgency">⚡ Join 1,847+ Pro Traders | Only 23 Spots Left This Month</p>
             <form id="waitlistForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <i class="fas fa-user form-icon"></i>
-                        <input type="text" placeholder="Full Name *" required>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="position: relative;">
+                        <i class="fas fa-user" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
+                        <input type="text" placeholder="Full Name *" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
                     </div>
-                    <div class="form-group">
-                        <i class="fas fa-envelope form-icon"></i>
-                        <input type="email" placeholder="Email Address *" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <i class="fas fa-dollar-sign form-icon"></i>
-                        <input type="text" placeholder="Account Size ($)" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-globe form-icon"></i>
-                        <input type="text" placeholder="Broker (MT4/MT5)" required>
+                    <div style="position: relative;">
+                        <i class="fas fa-envelope" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
+                        <input type="email" placeholder="Trading Email *" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
                     </div>
                 </div>
-                <div class="form-group full">
-                    <i class="fas fa-phone form-icon"></i>
-                    <input type="tel" placeholder="WhatsApp/Telegram">
-                </div>
-                <button type="submit" class="btn-primary">🚀 Deploy My Bot Now</button>
-            </form>
-        </div>
-    </section>
-
-    <script>
-        window.addEventListener('scroll', () => {
-            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        function scrollToWaitlist() { document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); }
-        function scrollToResults() { document.getElementById('results').scrollIntoView({behavior:'smooth'}); }
-
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('active'));
-        });
-        reveals.forEach(el => observer.observe(el));
-
-        let count = 1247;
-        setInterval(() => {
-            count = count < 1300 ? count + 1 : 1247;
-            document.getElementById('liveCounter').textContent = `${count.toLocaleString()} Active Bots`;
-        }, 3000);
-
-        document.getElementById('waitlistForm').addEventListener('submit', e => {
-            e.preventDefault();
-            alert('✅ Apex AI Trading Bot activated! Check your email for setup guide.');
-        });
-    </script>
-</body>
-</html>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="position: relative;">
+                        <i class="fas fa-dollar-sign" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.1rem; z-index: 2;"></i>
+                        <input type="text" placeholder="Account Size ($)" required style="width: 100%; padding: 1.4rem 1.4rem 1.4rem 3.5rem; background: rgba(255,255,255,0.08); border: 2px solid rgba(212,175,55,0.3); border-radius: 15px; color: #fff; font-size: 1rem; backdrop-filter: blur(20px);">
+                    </div>
+                    <div style="position: relative;">
+                        <i class="fas fa-globe" style="position: absolute; left: 1.2rem; top: 50%;
