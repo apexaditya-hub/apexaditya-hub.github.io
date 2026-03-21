@@ -3,310 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex AI - Institutional AI Trading Platform | SEBI Compliant</title>
-    //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    //cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!-- Tawk.to Live Chat - Replace YOUR_PROPERTY_ID -->
-    <script>
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/1h0q0p0q';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+    <title>ForexAI Bot - 15-20% Consistent Returns | Automated Forex Trading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        /* PREMIUM INSTITUTIONAL CSS - FULLY CORRECTED */
+        /* GLOBAL VARIABLES - Forex Trading Theme */
         :root {
-            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
-            --success-gradient: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
-            --glass-bg: rgba(255,255,255,0.08);
-            --glass-border: rgba(255,255,255,0.12);
-            --text-muted: #a1a1aa;
-            --shadow-heavy: 0 30px 60px rgba(0,0,0,0.5);
+            --primary: linear-gradient(135deg, #00d4aa 0%, #00b894 50%, #00a085 100%);
+            --secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success: linear-gradient(135deg, #00b894 0%, #00d4aa 100%);
+            --glass: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.15);
+            --dark-bg: #0a0e17;
+            --card-bg: rgba(20,25,40,0.8);
         }
 
         *{margin:0;padding:0;box-sizing:border-box;}
         html{scroll-behavior:smooth;scroll-padding-top:100px;}
         body{
             font-family:'Inter',sans-serif;
-            background:linear-gradient(135deg,#0a0a0f 0%,#1a1a2e 50%,#16213e 100%);
+            background:linear-gradient(135deg,var(--dark-bg) 0%,#1a1f2e 50%,#0f141f 100%);
             color:#fff;
             overflow-x:hidden;
             line-height:1.6;
         }
 
-        /* NAVBAR */
-        .nav{
-            position:fixed;top:0;width:100%;z-index:1000;
-            display:flex;justify-content:space-between;align-items:center;
-            padding:1.2rem 5%;backdrop-filter:blur(25px);
-            background:rgba(10,10,15,0.95);border-bottom:1px solid var(--glass-border);
-            transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow:0 10px 30px rgba(0,0,0,0.3);
-        }
-        .nav.scrolled{padding:0.9rem 5%;background:rgba(10,10,15,0.98);box-shadow:var(--shadow-heavy);}
-        .logo{font-size:clamp(1.5rem,3vw,1.8rem);font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .nav-actions{display:flex;gap:1rem;align-items:center;}
-        .live-badge{background:var(--success-gradient);color:#000;padding:0.4rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;}
-        .nav-btn{padding:0.8rem 2rem;border-radius:12px;background:linear-gradient(135deg,#fff,#f8fafc);color:#000;border:none;cursor:pointer;font-weight:600;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 25px rgba(255,255,255,0.2);}
-        .nav-btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(255,255,255,0.3);}
+        /* NAVBAR - Global Sales */
+        .nav{position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;backdrop-filter:blur(30px);background:rgba(10,14,23,0.95);border-bottom:1px solid var(--glass-border);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);}
+        .nav.scrolled{padding:0.9rem 5%;background:rgba(10,14,23,0.98);box-shadow:0 20px 40px rgba(0,0,0,0.5);}
+        .logo{font-size:clamp(1.6rem,3.5vw,2rem);font-weight:800;background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .nav-right{display:flex;gap:1.5rem;align-items:center;}
+        .live-traders{background:var(--success);color:#000;padding:0.5rem 1.2rem;border-radius:25px;font-size:0.95rem;font-weight:700;}
+        .cta-nav{padding:0.9rem 2.2rem;border-radius:15px;background:#fff;color:#000;border:none;font-weight:600;cursor:pointer;transition:all 0.4s ease;box-shadow:0 10px 30px rgba(0,212,170,0.3);}
+        .cta-nav:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,212,170,0.4);}
 
-        /* HERO */
+        /* HERO - Forex Chart Focus */
         .hero{display:flex;justify-content:space-between;align-items:center;padding:140px 5% 100px;min-height:100vh;position:relative;overflow:hidden;}
         
-        /* MULTI-LAYER GRADIENT MESH */
-        .hero::before{content:'';position:absolute;width:900px;height:900px;background:radial-gradient(circle,#4f46e5cc 0%,transparent 65%);top:-300px;left:-300px;opacity:0.35;filter:blur(100px);animation:move1 20s infinite ease-in-out;z-index:1;}
-        .hero::after{content:'';position:absolute;width:750px;height:750px;background:radial-gradient(circle,#22c55ecc 0%,#06b6d4aa 50%,transparent 70%);bottom:-250px;right:-250px;opacity:0.4;filter:blur(90px);animation:move2 25s infinite ease-in-out reverse;z-index:1;}
-        .hero-blob3{position:absolute;width:400px;height:400px;background:radial-gradient(circle,#ec4899aa 0%,transparent 70%);top:20%;right:10%;filter:blur(80px);opacity:0.25;animation:pulseGlow 15s infinite ease-in-out;z-index:1;}
+        /* FOREX CHART ANIMATIONS */
+        .hero::before{content:'';position:absolute;width:1000px;height:1000px;background:radial-gradient(circle,#00d4aa40 0%,transparent 70%);top:-350px;left:-350px;opacity:0.3;filter:blur(120px);animation:blob1 22s infinite ease-in-out;}
+        .hero::after{content:'';position:absolute;width:800px;height:800px;background:radial-gradient(circle,#667eea40 0%,#764ba240 60%,transparent 80%);bottom:-300px;right:-300px;opacity:0.35;filter:blur(100px);animation:blob2 28s infinite ease-in-out reverse;}
+        .chart-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,#00b89460 0%,transparent 70%);top:15%;left:15%;filter:blur(100px);opacity:0.25;animation:pulseChart 18s infinite ease-in-out;}
         
-        @keyframes move1{0%,100%{transform:scale(1) translate(0,0);}33%{transform:scale(1.1) translate(40px,-30px);}66%{transform:scale(0.95) translate(-25px,35px);}}
-        @keyframes move2{0%,100%{transform:scale(1) translate(0,0);}33%{transform:scale(1.08) translate(-50px,45px);}66%{transform:scale(1.15) translate(35px,-25px);}}
-        @keyframes pulseGlow{0%,100%{opacity:0.25;transform:scale(1);}50%{opacity:0.4;transform:scale(1.1);}}
+        @keyframes blob1{0%,100%{transform:scale(1) translate(0,0);}33%{transform:scale(1.15) translate(50px,-40px);}66%{transform:scale(0.9) translate(-30px,50px);}}
+        @keyframes blob2{0%,100%{transform:scale(1) translate(0,0);}33%{transform:scale(1.1) translate(-60px,60px);}66%{transform:scale(1.2) translate(40px,-30px);}}
+        @keyframes pulseChart{0%,100%{opacity:0.25;transform:scale(1);}50%{opacity:0.45;transform:scale(1.15);}}
 
-        /* HERO CONTENT */
-        .hero-left{max-width:600px;z-index:3;}
-        .hero h1{font-size:clamp(3.5rem,8vw,6rem);font-weight:800;line-height:1.08;margin-bottom:1.8rem;background:linear-gradient(135deg,#fff 0%,#e0e7ff 50%,#c7d2fe 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .hero h1 span{background:var(--primary-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .hero p{font-size:1.35rem;color:var(--text-muted);margin-bottom:2.5rem;font-weight:400;}
-        .cta{margin-top:2rem;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;}
-        .primary{background:linear-gradient(135deg,#fff,#f8fafc);color:#000;padding:1.2rem 2.8rem;border-radius:16px;border:none;cursor:pointer;font-weight:600;font-size:1.1rem;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 12px 40px rgba(255,255,255,0.25);position:relative;overflow:hidden;}
-        .primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.7s;}
-        .primary:hover::before{left:100%;}
-        .primary:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 25px 50px rgba(255,255,255,0.35);}
-        .secondary{background:var(--glass-bg);border:1px solid var(--glass-border);color:#fff;padding:1.2rem 2.8rem;border-radius:16px;backdrop-filter:blur(20px);font-weight:600;font-size:1.1rem;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);}
-        .secondary:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.25);transform:translateY(-3px);box-shadow:0 0 30px rgba(79,70,229,0.3);}
+        .hero-left{max-width:620px;z-index:3;}
+        .hero h1{font-size:clamp(4rem,9vw,7rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,#e8f8f5 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .hero h1 .highlight{background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .hero-subtitle{font-size:1.5rem;color:#b8c1d4;margin-bottom:1rem;font-weight:400;}
+        .performance-stats{display:flex;gap:3rem;flex-wrap:wrap;align-items:center;margin:2rem 0;font-size:1.3rem;font-weight:600;}
+        .stat-item{display:flex;flex-direction:column;align-items:center;}
+        .stat-number{font-size:2.5rem;font-weight:900;background:var(--success);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .cta-hero{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;margin-top:3rem;}
+        .btn-primary{padding:1.4rem 3rem;border-radius:20px;background:linear-gradient(135deg,#fff 0%,#f0f9ff 100%);color:#000;border:none;font-size:1.2rem;font-weight:700;cursor:pointer;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);box-shadow:0 20px 50px rgba(0,212,170,0.4);position:relative;overflow:hidden;}
+        .btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.8s;}
+        .btn-primary:hover::before{left:100%;}
+        .btn-primary:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 30px 60px rgba(0,212,170,0.5);}
+        .btn-secondary{padding:1.4rem 3rem;border-radius:20px;background:var(--glass);border:2px solid var(--glass-border);color:#fff;font-size:1.2rem;font-weight:700;cursor:pointer;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);backdrop-filter:blur(25px);}
+        .btn-secondary:hover{background:rgba(255,255,255,0.2);border-color:#00d4aa;transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,212,170,0.3);}
 
-        /* DASHBOARD PREVIEW */
-        .hero-right{z-index:3;}
-        .floating-card{width:clamp(380px,35vw,480px);height:520px;border-radius:28px;overflow:hidden;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(25px);animation:float 6s ease-in-out infinite;box-shadow:var(--shadow-heavy);transition:all 0.5s cubic-bezier(0.4,0,0.2,1);}
-        .floating-card:hover{transform:translateY(-25px) scale(1.03);box-shadow:0 60px 120px rgba(0,0,0,0.7);border-color:rgba(79,70,229,0.6);}
-        .tradingview-widget{width:100%;height:100%;border-radius:24px;}
-        @keyframes float{0%,100%{transform:translateY(0) rotateX(0deg);}50%{transform:translateY(-18px) rotateX(1deg);}}
+        /* FOREX DASHBOARD */
+        .hero-right{z-index:3;flex:1;display:flex;justify-content:center;}
+        .forex-dashboard{width:clamp(420px,40vw,550px);height:600px;border-radius:32px;overflow:hidden;background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(30px);box-shadow:0 40px 100px rgba(0,0,0,0.6);position:relative;}
+        .forex-dashboard::before{content:'Live Forex Signals';position:absolute;top:2rem;left:2rem;z-index:2;font-size:1.1rem;font-weight:700;color:#00d4aa;}
+        .tradingview-widget{width:100%;height:100%;border-radius:28px;}
 
-        /* TRUST SECTION */
-        .trust{padding:140px 5%;text-align:center;background:rgba(15,23,42,0.5);}
-        .trust h2{font-size:clamp(2.8rem,6vw,4rem);font-weight:800;margin-bottom:3rem;background:linear-gradient(135deg,#fff,#e0e7ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .badges{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:4rem 0;}
-        .badge{display:flex;align-items:center;gap:0.8rem;padding:1.2rem 2rem;background:var(--glass-bg);border-radius:16px;border:1px solid var(--glass-border);font-weight:600;transition:all 0.3s ease;}
-        .badge:hover{transform:translateY(-5px);background:rgba(255,255,255,0.15);}
-        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.5rem;margin-top:5rem;max-width:1200px;margin-left:auto;margin-right:auto;}
-        .stat{text-align:center;}
-        .stat-number{font-size:clamp(3.5rem,10vw,5.5rem);font-weight:800;background:var(--success-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;}
+        /* RESULTS SECTION */
+        .results{padding:160px 5%;background:linear-gradient(180deg,rgba(0,212,170,0.05) 0%,transparent 100%);}
+        .results h2{font-size:clamp(3rem,7vw,5rem);font-weight:900;text-align:center;margin-bottom:6rem;background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem;max-width:1400px;margin:0 auto;}
+        .metric-card{padding:4rem 3rem;background:var(--glass);border-radius:28px;border:1px solid var(--glass-border);backdrop-filter:blur(25px);text-align:center;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);}
+        .metric-card:hover{transform:translateY(-15px);box-shadow:0 40px 80px rgba(0,212,170,0.3);}
+        .metric-icon{font-size:5rem;background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:2rem;}
+        .metric-value{font-size:clamp(3.5rem,10vw,6rem);font-weight:900;background:var(--success);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;}
+        .metric-label{font-size:1.3rem;color:#b8c1d4;font-weight:600;}
 
-        /* FEATURES */
-        .features{padding:140px 5%;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02) 0%,transparent 100%);}
-        .features h2{font-size:clamp(2.8rem,6vw,4rem);font-weight:800;margin-bottom:5rem;background:linear-gradient(135deg,#fff,#e0e7ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:3rem;max-width:1200px;margin:0 auto;}
-        .card{padding:4rem 3rem;background:var(--glass-bg);border-radius:28px;border:1px solid var(--glass-border);backdrop-filter:blur(25px);transition:all 0.5s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;cursor:pointer;}
-        .card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--primary-gradient);transform:scaleX(0);transition:transform 0.5s ease;}
-        .card:hover::before{transform:scaleX(1);}
-        .card:hover{transform:translateY(-20px) scale(1.02);box-shadow:var(--shadow-heavy);border-color:rgba(79,70,229,0.5);}
-        .card h3{font-size:1.5rem;font-weight:700;margin:1.5rem 0 1rem;}
-        .card-icon{font-size:4.5rem;background:var(--primary-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem;display:block;}
+        /* HOW IT WORKS */
+        .how{padding:160px 5%;background:var(--dark-bg);}
+        .how h2{font-size:clamp(3rem,7vw,5rem);font-weight:900;text-align:center;margin-bottom:6rem;background:linear-gradient(135deg,#fff,#e8f8f5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem;max-width:1200px;margin:0 auto;}
+        .step{padding:4rem 3rem;background:var(--glass);border-radius:28px;border:1px solid var(--glass-border);backdrop-filter:blur(25px);position:relative;transition:all 0.5s ease;text-align:center;}
+        .step-number{position:absolute;top:-2rem;left:50%;transform:translateX(-50%);width:4rem;height:4rem;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#fff;}
+        .step:hover{transform:translateY(-20px);border-color:#00d4aa;}
 
         /* PRICING */
-        .pricing{padding:140px 5%;text-align:center;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);}
-        .price-card{max-width:600px;margin:0 auto;padding:5.5rem 4rem;background:var(--glass-bg);border-radius:32px;border:1px solid var(--glass-border);backdrop-filter:blur(30px);box-shadow:var(--shadow-heavy);transition:all 0.4s ease;}
-        .price-card:hover{transform:translateY(-12px);box-shadow:0 50px 100px rgba(0,0,0,0.6);}
-        .price-amount{font-size:clamp(4.5rem,12vw,7rem);font-weight:800;background:var(--success-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:1rem 0 1.5rem;}
-        .price-features{list-style:none;text-align:left;max-width:450px;margin:3rem auto;}
-        .price-features li{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;font-size:1.1rem;font-weight:500;}
-        .price-features i{color:#4ade80;font-size:1.4rem;}
+        .pricing{padding:160px 5%;background:linear-gradient(135deg,#0f1419 0%,#1a1f2e 100%);}
+        .pricing h2{font-size:clamp(3rem,7vw,5rem);font-weight:900;text-align:center;margin-bottom:6rem;background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;max-width:1200px;margin:0 auto;}
+        .plan{background:var(--glass);border-radius:32px;border:2px solid var(--glass-border);backdrop-filter:blur(30px);padding:4rem 3rem;text-align:center;transition:all 0.5s ease;overflow:hidden;position:relative;}
+        .plan.featured{border-color:#00d4aa;transform:scale(1.05);}
+        .plan.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--primary);}
+        .plan h3{font-size:1.8rem;font-weight:800;margin-bottom:1.5rem;}
+        .plan-price{font-size:clamp(3rem,8vw,5rem);font-weight:900;background:var(--success);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;}
+        .plan-features{list-style:none;margin:2.5rem 0;}
+        .plan-features li{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;font-size:1.1rem;font-weight:500;color:#b8c1d4;}
+        .plan-features i{color:#00d4aa;font-size:1.4rem;}
+        .plan-btn{width:100%;padding:1.5rem;border-radius:20px;background:var(--primary);color:#fff;border:none;font-size:1.2rem;font-weight:700;cursor:pointer;transition:all 0.4s ease;margin-top:2rem;}
+        .plan-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,212,170,0.4);}
 
         /* WAITLIST */
-        .waitlist{padding:160px 5%;text-align:center;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 50%,#7c3aed 100%);position:relative;overflow:hidden;}
-        .waitlist::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.15) 0%,transparent 70%);animation:rotate 20s linear infinite;}
-        @keyframes rotate{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-        .waitlist-form{max-width:700px;margin:0 auto;background:rgba(255,255,255,0.12);backdrop-filter:blur(35px);padding:5rem;border-radius:32px;border:1px solid rgba(255,255,255,0.3);position:relative;z-index:2;}
-        .form-group{position:relative;margin-bottom:2rem;}
-        .form-group input{width:100%;padding:1.5rem 1.5rem 1.5rem 4.5rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);border-radius:20px;color:#fff;font-size:1.1rem;backdrop-filter:blur(20px);transition:all 0.3s ease;}
-        .form-group input::placeholder{color:rgba(255,255,255,0.85);}
-        .form-group input:focus{outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,0.2);}
-        .form-icon{position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.9);font-size:1.3rem;}
-        .waitlist h2{font-size:clamp(3rem,8vw,4.5rem);margin-bottom:1.5rem;}
-        .urgency{font-size:1.5rem;color:rgba(255,255,255,0.95);font-weight:600;margin-bottom:3rem;}
+        .waitlist{padding:180px 5%;text-align:center;background:linear-gradient(135deg,#00d4aa20 0%,#667eea20 50%,var(--dark-bg) 100%);position:relative;overflow:hidden;}
+        .waitlist-form{max-width:750px;margin:0 auto;background:var(--glass);backdrop-filter:blur(35px);padding:5.5rem;border-radius:40px;border:2px solid var(--glass-border);position:relative;z-index:2;}
+        .waitlist h2{font-size:clamp(3.5rem,8vw,6rem);font-weight:900;margin-bottom:1.5rem;background:var(--primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .urgency{font-size:1.6rem;color:#fff;font-weight:700;margin-bottom:4rem;text-shadow:0 2px 10px rgba(0,0,0,0.5);}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;}
+        .form-group{position:relative;}
+        .form-group input{width:100%;padding:1.6rem 1.5rem 1.6rem 4.5rem;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;color:#fff;font-size:1.2rem;backdrop-filter:blur(20px);transition:all 0.4s ease;}
+        .form-group input::placeholder{color:rgba(255,255,255,0.7);}
+        .form-group input:focus{outline:none;border-color:#00d4aa;box-shadow:0 0 0 4px rgba(0,212,170,0.2);}
+        .form-icon{position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);color:#00d4aa;font-size:1.4rem;}
+        .form-group.full{width:100%;}
 
-        /* REVEAL ANIMATIONS */
-        .reveal{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(0.4,0,0.2,1);}
+        /* ANIMATIONS */
+        .reveal{opacity:0;transform:translateY(80px);transition:all 1.2s cubic-bezier(0.4,0,0.2,1);}
         .reveal.active{opacity:1;transform:translateY(0);}
-        .reveal:nth-child(1){transition-delay:0.1s;}.reveal:nth-child(2){transition-delay:0.2s;}.reveal:nth-child(3){transition-delay:0.3s;}
-
-        /* MOBILE */
-        @media(max-width:768px){
-            .hero{flex-direction:column;text-align:center;}
-            .hero-left{max-width:100%;margin-bottom:4rem;}
-            .cta{justify-content:center;}
-            .floating-card{width:90vw;max-width:380px;}
-            .grid{grid-template-columns:1fr;}
-            .badges{flex-direction:column;gap:1.5rem;align-items:center;}
-            .features,.pricing,.trust,.waitlist{padding:100px 5%;}
-        }
+        @media(max-width:768px){.hero{flex-direction:column;text-align:center;}.hero-right{margin-top:4rem;}.form-row{grid-template-columns:1fr;}}
     </style>
 </head>
-<body>
+body>
     <!-- NAVBAR -->
     <nav class="nav" id="nav">
-        <div class="logo">Apex AI</div>
-        <div class="nav-actions">
-            <span class="live-badge" id="liveCount">247 Live Traders</span>
-            <button class="nav-btn" onclick="scrollToWaitlist()">Get Early Access</button>
+        <div class="logo">ForexAI Bot</div>
+        <div class="nav-right">
+            <span class="live-traders" id="liveCounter">1,247 Active Bots</span>
+            <button class="cta-nav" onclick="scrollToWaitlist()">Get Started</button>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-blob3"></div>
+        <div class="chart-glow"></div>
         <div class="hero-left reveal">
-            <h1>AI Trading.<br><span>Built for Institutions.</span></h1>
-            <p>95.2% win rate • $2.1B AUM • Sub-50ms execution • SEBI Compliant</p>
-            <div class="cta">
-                <button class="primary" onclick="scrollToWaitlist()">
-                    <i class="fas fa-rocket"></i> Start 14-Day Free Trial
+            <h1>15-20% <span class="highlight">Consistent Returns</span><br>Automated Forex Trading</h1>
+            <p class="hero-subtitle">Your AI Forex Bot trades 24/7 across EUR/USD, GBP/USD, USD/JPY with institutional-grade risk management</p>
+            <div class="performance-stats">
+                <div class="stat-item">
+                    <div class="stat-number">17.8%</div>
+                    <div>2025 YTD Return</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8.2%</div>
+                    <div>Max Drawdown</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">94%</div>
+                    <div>Win Rate</div>
+                </div>
+            </div>
+            <div class="cta-hero">
+                <button class="btn-primary" onclick="scrollToWaitlist()">
+                    <i class="fas fa-rocket"></i> Start Free Trial
                 </button>
-                <button class="secondary" onclick="scrollToFeatures()">
-                    <i class="fas fa-play"></i> Watch Demo (1:47)
+                <button class="btn-secondary" onclick="scrollToResults()">
+                    <i class="fas fa-chart-line"></i> Live Results
                 </button>
             </div>
         </div>
         <div class="hero-right">
-            <div class="floating-card">
-                <!-- TradingView Live Chart -->
+            <div class="forex-dashboard">
+                <!-- TradingView Forex Chart -->
                 <div class="tradingview-widget-container">
-                    <div class="tradingview-widget" data-url="https://www.tradingview.com/symbols/NSE-NIFTY/"></div>
-                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
+                    <div class="tradingview-widget" data-pairs="EURUSD,GBPUSD,USDJPY" data-theme="dark" data-width="100%" data-height="100%"></div>
+                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-multi-charts.js" async></script>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TRUST -->
-    <section class="trust">
-        <h2 class="reveal">Institutional Trust Signals</h2>
-        <div class="badges">
-            <div class="badge reveal"><i class="fas fa-shield-alt"></i> SOC2 Type II Certified</div>
-            <div class="badge reveal"><i class="fas fa-lock"></i> 256-bit Bank Grade</div>
-            <div class="badge reveal"><i class="fas fa-file-contract"></i> SEBI Compliant</div>
-            <div class="badge reveal"><i class="fas fa-tachometer-alt"></i> 99.99% Uptime</div>
-            <div class="badge reveal"><i class="fas fa-plug"></i> FIX 4.4 API</div>
-        </div>
-        <div class="stats-grid">
-            <div class="stat reveal"><div class="stat-number">95.2%</div>Win Rate</div>
-            <div class="stat reveal"><div class="stat-number">3.8x</div>Alpha Generated</div>
-            <div class="stat reveal"><div class="stat-number">$2.1B</div>AUM</div>
-            <div class="stat reveal"><div class="stat-number">247</div>Institutions</div>
+    <!-- RESULTS -->
+    <section class="results" id="results">
+        <h2 class="reveal">Real Performance. Real Results.</h2>
+        <div class="metrics-grid">
+            <div class="metric-card reveal">
+                <i class="fas fa-chart-line metric-icon"></i>
+                <div class="metric-value">17.8%</div>
+                <div class="metric-label">2025 YTD Return<br>(All Pairs)</div>
+            </div>
+            <div class="metric-card reveal">
+                <i class="fas fa-shield-alt metric-icon"></i>
+                <div class="metric-value">8.2%</div>
+                <div class="metric-label">Max Drawdown<br>(Risk Controlled)</div>
+            </div>
+            <div class="metric-card reveal">
+                <i class="fas fa-trophy metric-icon"></i>
+                <div class="metric-value">94%</div>
+                <div class="metric-label">Win Rate<br>(Live Trading)</div>
+            </div>
+            <div class="metric-card reveal">
+                <i class="fas fa-bolt metric-icon"></i>
+                <div class="metric-value">0.3s</div>
+                <div class="metric-label">Avg Trade Speed<br>(Execution)</div>
+            </div>
         </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="features" id="features">
-        <h2 class="reveal">Enterprise Grade Platform</h2>
-        <div class="grid">
-            <div class="card reveal">
-                <i class="fas fa-brain card-icon"></i>
-                <h3>ML Alpha Engine</h3>
-                <p>127 ML models • 15+ years tick data • Sharpe ratio 2.8+ • Daily recalibration</p>
+    <!-- HOW IT WORKS -->
+    <section class="how">
+        <h2 class="reveal">How ForexAI Bot Works</h2>
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-number">1</div>
+                <h3>AI Pattern Recognition</h3>
+                <p>Analyzes 50+ technical patterns across 28 forex pairs in real-time using 12 ML models</p>
             </div>
-            <div class="card reveal">
-                <i class="fas fa-bolt card-icon"></i>
-                <h3>Ultra Fast Execution</h3>
-                <p>Sub-50ms latency • Co-lo servers • Smart routing • TC/FP &lt;0.02bps</p>
+            <div class="step reveal">
+                <div class="step-number">2</div>
+                <h3>Risk Management</h3>
+                <p>Dynamic position sizing, 1-2% risk per trade, correlation filters, news avoidance</p>
             </div>
-            <div class="card reveal">
-                <i class="fas fa-plug card-icon"></i>
-                <h3>Complete API Suite</h3>
-                <p>REST • WebSocket • FIX 4.4 • Python SDK • 99.9% delivery SLA</p>
+            <div class="step reveal">
+                <div class="step-number">3</div>
+                <h3>Auto Execution</h3>
+                <p>Lightning-fast trades via MT4/MT5/cTrader with institutional-grade slippage protection</p>
             </div>
         </div>
     </section>
 
     <!-- PRICING -->
     <section class="pricing">
-        <h2 class="reveal">Institutional Pricing</h2>
-        <div class="price-card reveal">
-            <h3>Elite Plan</h3>
-            <div class="price-amount">₹30,000<span style="font-size:2rem;font-weight:400;">/month</span></div>
-            <p style="color:var(--text-muted);font-size:1.3rem;margin-bottom:2.5rem;">or ₹2.5L/year (Save 30%)</p>
-            <ul class="price-features">
-                ><i class="fas fa-check"></i> Unlimited Live Signals</li>
-                ><i class="fas fa-check"></i> Full API + FIX Access</li>
-                ><i class="fas fa-check"></i> Priority 24/7 Support</li>
-                ><i class="fas fa-check"></i> Custom Strategy Setup</li>
-                ><i class="fas fa-check"></i> Dedicated Account Manager</li>
-            </ul>
-            <button class="primary" style="width:100%;padding:1.6rem;font-size:1.2rem;margin-top:2rem;" onclick="scrollToWaitlist()">Start 14-Day Free Trial</button>
-        </div>
-    </section>
-
-    <!-- WAITLIST FORM -->
-    <section class="waitlist" id="waitlist">
-        <div class="waitlist-form reveal">
-            <h2>Join 247 Institutions</h2>
-            <p class="urgency">Only 18 spots remaining this month</p>
-            <form id="waitlistForm">
-                <div class="form-group">
-                    <i class="fas fa-user form-icon"></i>
-                    <input type="text" placeholder="Full Name *" required>
-                </div>
-                <div class="form-group">
-                    <i class="fas fa-envelope form-icon"></i>
-                    <input type="email" placeholder="Trading Email *" required>
-                </div>
-                <div class="form-group">
-                    <i class="fas fa-building form-icon"></i>
-                    <input type="text" placeholder="Firm Name / AUM Size">
-                </div>
-                <button type="submit" class="primary" style="width:100%;padding:1.7rem;font-size:1.3rem;margin-top:2rem;">
-                    <i class="fas fa-rocket"></i> Secure Your Spot Now
-                </button>
-            </form>
-            <div style="margin-top:3rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;color:rgba(255,255,255,0.95);font-weight:600;font-size:1.1rem;">
-                <div><i class="fas fa-check-circle" style="color:#4ade80;margin-right:0.5rem;"></i>14-Day Free Trial</div>
-                <div><i class="fas fa-check-circle" style="color:#4ade80;margin-right:0.5rem;"></i>Live Onboarding</div>
-                <div><i class="fas fa-check-circle" style="color:#4ade80;margin-right:0.5rem;"></i>Custom Setup</div>
+        <h2 class="reveal">Simple Global Pricing</h2>
+        <div class="plans">
+            <div class="plan reveal">
+                <h3>Starter</h3>
+                <div class="plan-price">$97<span>/month</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 5 Forex Pairs</li>
+                    <li><i class="fas fa-check"></i> Basic Signals</li>
+                    <li><i class="fas fa-check"></i> Email Alerts</li>
+                    <li><i class="fas fa-check"></i> 24/7 Support</li>
+                </ul>
+                <button class="plan-btn" onclick="scrollToWaitlist()">Get Started</button>
+            </div>
+            <div class="plan featured reveal">
+                <h3>Pro Trader</h3>
+                <div class="plan-price">$297<span>/month</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> All 28 Pairs</li>
+                    <li><i class="fas fa-check"></i> Auto Trading API</li>
+                    <li><i class="fas fa-check"></i> MT4/MT5 Integration</li>
+                    <li><i class="fas fa-check"></i> Priority Support</li>
+                    <li><i class="fas fa-check"></i> Custom Risk Settings</li>
+                </ul>
+                <button class="plan-btn" onclick="scrollToWaitlist()">Most Popular</button>
+            </div>
+            <div class="plan reveal">
+                <h3>Enterprise</h3>
+                <div class="plan-price">$997<span>/month</div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Unlimited Accounts</li>
+                    <li><i class="fas fa-check"></i> FIX API Access</li>
+                    <li><i class="fas fa-check"></i> Dedicated Server</li>
+                    <li><i class="fas fa-check"></i> Custom Strategies</li>
+                    <li><i class="fas fa-check"></i> 24/7 Manager</li>
+                </ul>
+                <button class="plan-btn" onclick="scrollToWaitlist()">Contact Sales</button>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer style="padding:4rem 5% 2rem;text-align:center;border-top:1px solid var(--glass-border);color:var(--text-muted);background:#0a0a0f;">
-        <div style="font-size:1.2rem;margin-bottom:1.5rem;font-weight:600;">© 2026 Apex AI Technologies Pvt Ltd. | Gurgaon, Haryana</div>
-        <div style="display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:2rem;">
-            <a href="#" style="color:var(--text-muted);text-decoration:none;font-weight:500;">Privacy Policy</a>
-            <a href="#" style="color:var(--text-muted);text-decoration:none;font-weight:500;">Terms of Service</a>
-            <a href="#" style="color:var(--text-muted);text-decoration:none;font-weight:500;">API Documentation</a>
-            <a href="#" style="color:var(--text-muted);text-decoration:none;font-weight:500;">Support</a>
+    <!-- WAITLIST -->
+    <section class="waitlist" id="waitlist">
+        <div class="waitlist-form reveal">
+            <h2>Get Your ForexAI Bot Now</h2>
+            <p class="urgency">Join 1,247+ traders | Only 47 spots left this month</p>
+            <form id="waitlistForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-user form-icon"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope form-icon"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-dollar-sign form-icon"></i>
+                        <input type="text" placeholder="Account Size ($)" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-globe form-icon"></i>
+                        <input type="text" placeholder="Broker (MT4/MT5)" required>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <i class="fas fa-phone form-icon"></i>
+                    <input type="tel" placeholder="WhatsApp/Telegram (Setup Help)">
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;padding:2rem;font-size:1.4rem;margin-top:3rem;">
+                    <i class="fas fa-robot"></i> Deploy My Forex Bot Now
+                </button>
+            </form>
         </div>
-        <div style="font-size:1rem;">
-            <i class="fas fa-shield-alt" style="color:#22c55e;margin-right:0.5rem;"></i>
-            SEBI Compliant • SOC2 Type II • 256-bit AES Encryption • 99.99% Uptime
-        </div>
-    </footer>
+    </section>
 
     <script>
-        // Navbar scroll
+        // Navbar scroll effect
         window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
 
-        // Smooth scroll
+        // Smooth scroll functions
         function scrollToWaitlist(){document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});}
-        function scrollToFeatures(){document.getElementById('features').scrollIntoView({behavior:'smooth'});}
+        function scrollToResults(){document.getElementById('results').scrollIntoView({behavior:'smooth'});}
 
         // Reveal animations
         const reveals=document.querySelectorAll('.reveal');
-        const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('active'))});
+        const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('active'))});
         reveals.forEach(el=>observer.observe(el));
 
-        // Live counter
-        let liveCount=247;
-        setInterval(()=>{liveCount=liveCount<255?liveCount+1:247;document.getElementById('liveCount').textContent=`${liveCount} Live Traders`},5000);
+        // Live counter animation
+        let traderCount=1247;
+        setInterval(()=>{
+            traderCount=traderCount<1300?traderCount+1:1247;
+            document.getElementById('liveCounter').textContent=`${traderCount.toLocaleString()} Active Bots`;
+        },3000);
 
-        // Form submit
-        document.getElementById('waitlistForm').addEventListener('submit',e=>{
+        // Form submission
+        document.getElementById('waitlistForm').addEventListener('submit',function(e){
             e.preventDefault();
-            alert('✅ Spot reserved! Check email for instant access.\n\nProduction: Connect to Make.com → WhatsApp/Email');
+            // Connect to Make.com webhook for production
+            alert('✅ ForexAI Bot activated! Check email for instant setup guide.\n\nProduction: Make.com → WhatsApp/Email/Slack');
         });
     </script>
 </body>
