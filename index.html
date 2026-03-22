@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apex AI Trading — Automated Forex Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cyan: #00D4FF;
+      --cyan-dim: rgba(0,212,255,0.10);
+      --cyan-glow: rgba(0,212,255,0.22);
+      --cyan-border: rgba(0,212,255,0.22);
+      --black: #000000;
+      --black2: #080808;
+      --black3: #0F0F0F;
+      --black4: #161616;
+      --white: #F5F5F7;
+      --white2: #A1A1A6;
+      --white3: #6E6E73;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.03);
+      --up: #00E5A0;
+      --dn: #FF453A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; cursor: none !important; }
+    #cursor { width: 8px; height: 8px; background: #00D4FF; border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; box-shadow: 0 0 12px #00D4FF, 0 0 24px rgba(0,212,255,0.6); display: none; }
+    #ring { width: 34px; height: 34px; border: 1.5px solid rgba(0,212,255,0.65); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99998; display: none; transition: width 0.2s, height 0.2s; }
+    @media (hover: none) and (pointer: coarse) { body { cursor: auto !important; } #cursor, #ring { display: none !important; } }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 52px; background: rgba(0,0,0,0.78); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .logo span { color: var(--cyan); }
+    nav ul { list-style: none; display: flex; gap: 28px; position: absolute; left: 50%; transform: translateX(-50%); }
+    nav ul li a { text-decoration: none; color: var(--white2); font-size: 0.78rem; transition: color 0.2s; }
+    nav ul li a:hover { color: var(--white); }
+    .nav-cta { background: var(--cyan); color: var(--black); border: none; padding: 7px 18px; border-radius: 980px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, box-shadow 0.2s; }
+    .nav-cta:hover { opacity: 0.88; box-shadow: 0 0 20px rgba(0,212,255,0.35); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 100px; position: relative; overflow: hidden; }
+    .hero-orb { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.055) 0%, transparent 65%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; animation: orb 10s ease-in-out infinite; }
+    .hero-orb2 { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.03) 0%, transparent 70%); top: 15%; right: 5%; pointer-events: none; animation: orb 14s ease-in-out infinite reverse; }
+    @keyframes orb { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-52%) scale(1.05)} }
+
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,255,0.07); border: 1px solid var(--cyan-border); padding: 6px 18px; border-radius: 980px; font-size: 0.72rem; font-weight: 500; color: var(--white2); margin-bottom: 28px; animation: fadeU 0.8s ease both; }
+    .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--up); box-shadow: 0 0 8px var(--up); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    @keyframes fadeU { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    .hero h1 { font-size: clamp(3rem, 7.5vw, 7rem); font-weight: 700; line-height: 1.04; letter-spacing: -0.045em; max-width: 880px; margin: 0 auto 24px; animation: fadeU 0.9s 0.1s ease both; }
+    .hero h1 .c { color: var(--cyan); }
+    .hero h1 .d { font-weight: 200; color: var(--white2); }
+    .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--white2); font-weight: 300; max-width: 520px; margin: 0 auto 52px; line-height: 1.65; animation: fadeU 0.9s 0.2s ease both; }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeU 0.9s 0.3s ease both; }
+
+    .btn-p { background: var(--cyan); color: var(--black); border: none; padding: 15px 36px; border-radius: 980px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; box-shadow: 0 0 28px rgba(0,212,255,0.25); letter-spacing: -0.01em; }
+    .btn-p:hover { transform: scale(1.03); box-shadow: 0 0 48px rgba(0,212,255,0.42); }
+    .btn-g { background: transparent; color: var(--cyan); border: none; padding: 15px 36px; border-radius: 980px; font-family: 'Outfit', sans-serif; font-size: 0.9rem; cursor: pointer; transition: color 0.2s; }
+    .btn-g:hover { color: var(--white); }
+    .btn-g::after { content: ' →'; }
+
+    /* TICKER */
+    .ticker-wrap { overflow: hidden; padding: 13px 0; background: var(--black2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ticker { display: flex; gap: 56px; animation: scrollx 30s linear infinite; width: max-content; }
+    @keyframes scrollx { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .tick { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; }
+    .tp { color: var(--white3); }
+    .tv { color: var(--white); }
+    .tc.up { color: var(--up); }
+    .tc.dn { color: var(--dn); }
+
+    /* STATS */
+    .stats-row { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--border); }
+    .stat { padding: 56px 40px; border-right: 1px solid var(--border); position: relative; overflow: hidden; transition: background 0.3s; }
+    .stat:last-child { border-right: none; }
+    .stat:hover { background: rgba(0,212,255,0.025); }
+    .stat::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); transform: scaleX(0); transition: transform 0.5s; }
+    .stat:hover::after { transform: scaleX(1); }
+    .stat-n { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+    .stat-n .acc { color: var(--cyan); }
+    .stat-l { font-size: 0.75rem; color: var(--white3); }
+
+    /* SECTIONS */
+    section { padding: 120px 48px; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; }
+    .sec-title { font-size: clamp(2rem,4vw,3.6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.08; max-width: 680px; }
+    .sec-sub { font-size: 0.95rem; color: var(--white2); font-weight: 300; line-height: 1.7; max-width: 460px; margin-top: 14px; }
+    .ctr { text-align: center; margin: 0 auto; }
+    .ctr .sec-title, .ctr .sec-sub { margin-left: auto; margin-right: auto; }
+
+    /* BENTO */
+    .bento { display: grid; grid-template-columns: repeat(12,1fr); gap: 10px; max-width: 1200px; margin: 56px auto 0; }
+    .bc { background: var(--black3); border: 1px solid var(--border); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .bc:hover { border-color: var(--cyan-border); transform: translateY(-2px); }
+    .bc.c4 { grid-column: span 4; }
+    .bc.c6 { grid-column: span 6; }
+    .bc.c8 { grid-column: span 8; }
+    .bc-num { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--cyan); margin-bottom: 20px; letter-spacing: 0.1em; }
+    .bc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .bc h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .bc p { font-size: 0.86rem; color: var(--white3); line-height: 1.65; font-weight: 300; }
+    .bc-glow { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%); bottom: -70px; right: -70px; pointer-events: none; }
+    .bc-bignum { font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; margin-bottom: 8px; }
+    .bc-bignum span { color: var(--cyan); }
+    .code-block { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--cyan); line-height: 2.2; margin-bottom: 14px; }
+    .code-block .w { color: var(--up); }
+
+    /* SIM */
+    .sim-section { background: var(--black2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sim-inner { max-width: 880px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .sim-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white3); margin-bottom: 10px; }
+    .sim-inp { width: 100%; background: var(--black3); border: 1px solid var(--border); border-radius: 12px; color: var(--white); padding: 15px 18px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; outline: none; transition: border-color 0.3s; margin-bottom: 28px; }
+    .sim-inp:focus { border-color: var(--cyan); }
+    .sim-slider { -webkit-appearance: none; width: 100%; height: 2px; background: var(--border); outline: none; border-radius: 2px; }
+    .sim-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--cyan); cursor: pointer; box-shadow: 0 0 12px rgba(0,212,255,0.45); }
+    .sim-rl { display: flex; justify-content: space-between; margin-top: 8px; margin-bottom: 32px; font-size: 0.68rem; color: var(--white3); font-family: 'JetBrains Mono', monospace; }
+    .rcard { background: var(--black3); border: 1px solid var(--border); border-radius: 18px; padding: 32px; margin-bottom: 10px; transition: border-color 0.3s; }
+    .rcard:hover { border-color: var(--cyan-border); }
+    .rl { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white3); margin-bottom: 8px; }
+    .rv { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.04em; }
+    .rv.c { color: var(--cyan); }
+    .sim-note { font-size: 0.72rem; color: var(--white3); margin-top: 16px; line-height: 1.55; }
+
+    /* URGENCY */
+    .urgency { background: rgba(0,212,255,0.05); border: 1px solid var(--cyan-border); border-radius: 14px; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1100px; margin: 0 auto 36px; flex-wrap: wrap; }
+    .urgency-l { font-size: 0.83rem; color: var(--white2); }
+    .urgency-l strong { color: var(--cyan); }
+    .cd { display: flex; gap: 8px; align-items: center; font-family: 'JetBrains Mono', monospace; }
+    .cdb { background: var(--black3); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; text-align: center; }
+    .cdn { font-size: 1.2rem; color: var(--cyan); font-weight: 500; display: block; line-height: 1; }
+    .cdl { font-size: 0.5rem; color: var(--white3); letter-spacing: 0.08em; text-transform: uppercase; }
+    .cd-sep { color: var(--white3); }
+
+    /* TESTIMONIALS */
+    .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; max-width: 1200px; margin: 56px auto 0; }
+    .tc-card { background: var(--black3); border: 1px solid var(--border); border-radius: 20px; padding: 34px; transition: border-color 0.3s, transform 0.3s; }
+    .tc-card:hover { border-color: var(--cyan-border); transform: translateY(-4px); }
+    .stars { color: var(--cyan); font-size: 0.78rem; letter-spacing: 3px; margin-bottom: 18px; }
+    .tc-text { font-size: 0.87rem; color: var(--white2); line-height: 1.7; font-weight: 300; margin-bottom: 24px; }
+    .tc-author { display: flex; align-items: center; gap: 12px; }
+    .tc-av { width: 38px; height: 38px; border-radius: 50%; background: rgba(0,212,255,0.08); border: 1px solid var(--cyan-border); display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 600; color: var(--cyan); }
+    .tc-name { font-size: 0.83rem; font-weight: 600; }
+    .tc-loc { font-size: 0.7rem; color: var(--white3); }
+
+    /* PRICING */
+    .pricing-wrap { max-width: 520px; margin: 56px auto 0; }
+    .pricing-card { background: var(--black3); border: 1px solid var(--cyan-border); border-radius: 28px; padding: 52px; text-align: center; box-shadow: 0 0 100px rgba(0,212,255,0.07); position: relative; overflow: hidden; }
+    .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+    .pricing-pill { display: inline-block; background: rgba(0,212,255,0.08); border: 1px solid var(--cyan-border); color: var(--cyan); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 980px; margin-bottom: 24px; }
+    .pricing-amt { font-size: 5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; margin-bottom: 4px; }
+    .pricing-s { font-size: 0.8rem; color: var(--white3); margin-bottom: 36px; }
+    .pricing-div { height: 1px; background: var(--border); margin: 28px 0; }
+    .pricing-features { text-align: left; list-style: none; margin-bottom: 36px; }
+    .pricing-features li { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.86rem; color: var(--white2); display: flex; align-items: center; gap: 12px; font-weight: 300; }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before { content: '✓'; color: var(--cyan); font-weight: 700; font-size: 0.78rem; flex-shrink: 0; }
+    .pricing-g { font-size: 0.72rem; color: var(--white3); margin-top: 16px; }
+    .pricing-g strong { color: var(--cyan); }
+
+    /* FAQ */
+    .faq-wrap { max-width: 700px; margin: 56px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { padding: 20px 0; font-size: 0.93rem; font-weight: 500; color: var(--white); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: color 0.2s; letter-spacing: -0.01em; }
+    .faq-q:hover { color: var(--cyan); }
+    .faq-ic { width: 20px; height: 20px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--white3); flex-shrink: 0; transition: all 0.3s; }
+    .faq-item.open .faq-ic { border-color: var(--cyan); color: var(--cyan); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; font-size: 0.86rem; color: var(--white3); line-height: 1.75; font-weight: 300; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 180px; padding-bottom: 20px; }
+
+    /* FINAL CTA */
+    .final-cta { text-align: center; padding: 160px 40px; background: var(--black); position: relative; overflow: hidden; }
+    .final-cta::before { content: ''; position: absolute; width: 700px; height: 400px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,212,255,0.05) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .final-cta h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 700; letter-spacing: -0.05em; max-width: 640px; margin: 0 auto 18px; line-height: 1.06; }
+    .final-cta h2 .c { color: var(--cyan); }
+    .final-cta p { color: var(--white2); font-size: 0.95rem; font-weight: 300; margin-bottom: 44px; }
+
+    /* TRUST BAR */
+    .trust-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 40px; display: flex; align-items: center; justify-content: center; gap: 44px; flex-wrap: wrap; background: var(--black2); }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.76rem; color: var(--white3); }
+
+    /* FOOTER */
+    footer { background: var(--black2); border-top: 1px solid var(--border); padding: 56px 48px 28px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--border); margin-bottom: 22px; }
+    .footer-logo { font-size: 1rem; font-weight: 700; display: block; margin-bottom: 10px; }
+    .footer-logo span { color: var(--cyan); }
+    .footer-desc { font-size: 0.8rem; color: var(--white3); line-height: 1.7; max-width: 260px; }
+    footer h4 { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white3); margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { text-decoration: none; color: var(--white2); font-size: 0.82rem; font-weight: 300; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--cyan); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 0.7rem; color: var(--white3); }
+    .footer-disclaimer { font-size: 0.66rem; color: var(--white3); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 10px; }
+
+    /* MODAL */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9998; display: none; align-items: center; justify-content: center; backdrop-filter: blur(18px); }
+    .modal-overlay.active { display: flex; }
+    .modal { background: var(--black3); border: 1px solid var(--cyan-border); border-radius: 28px; padding: 50px 44px; max-width: 460px; width: 90%; position: relative; animation: min 0.35s ease both; box-shadow: 0 0 80px rgba(0,212,255,0.07); }
+    @keyframes min { from{opacity:0;transform:scale(0.94) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .modal-close { position: absolute; top: 18px; right: 18px; background: var(--black4); border: 1px solid var(--border); width: 30px; height: 30px; border-radius: 50%; color: var(--white3); font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; }
+    .modal-close:hover { border-color: var(--cyan); color: var(--cyan); }
+    .modal h3 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 6px; }
+    .modal > p { font-size: 0.82rem; color: var(--white3); margin-bottom: 28px; line-height: 1.5; }
+    .fg { margin-bottom: 14px; }
+    .fg label { display: block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white3); margin-bottom: 7px; }
+    .fg input, .fg select { width: 100%; background: var(--black4); border: 1px solid var(--border); border-radius: 10px; color: var(--white); padding: 13px 15px; font-family: 'Outfit', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+    .fg input:focus, .fg select:focus { border-color: var(--cyan); }
+    .fg select option { background: var(--black4); }
+    .modal-btn { width: 100%; background: var(--cyan); color: var(--black); border: none; padding: 15px; border-radius: 10px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; margin-top: 6px; transition: opacity 0.2s, box-shadow 0.2s; }
+    .modal-btn:hover { opacity: 0.88; box-shadow: 0 0 24px rgba(0,212,255,0.3); }
+    .modal-secure { font-size: 0.7rem; color: var(--white3); text-align: center; margin-top: 12px; }
+
+    /* CHAT */
+    .chat-wrap { position: fixed; bottom: 26px; right: 26px; z-index: 9000; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .chat-box { width: 330px; background: var(--black3); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.7); display: none; animation: ci 0.3s ease; }
+    .chat-box.open { display: block; }
+    @keyframes ci { from{opacity:0;transform:translateY(14px) scale(0.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .chat-head { background: var(--black4); border-bottom: 1px solid var(--border); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+    .chat-head-i { display: flex; align-items: center; gap: 10px; }
+    .chat-av { width: 32px; height: 32px; border-radius: 50%; background: rgba(0,212,255,0.08); border: 1px solid var(--cyan-border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .chat-n { font-size: 0.85rem; font-weight: 600; }
+    .chat-s { font-size: 0.68rem; color: var(--up); display: flex; align-items: center; gap: 4px; }
+    .chat-s::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--up); animation: blink 2s infinite; }
+    .chat-close { background: none; border: none; color: var(--white3); cursor: pointer; font-size: 0.9rem; }
+    .chat-msgs { padding: 14px 14px 8px; height: 210px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; }
+    .chat-msgs::-webkit-scrollbar { width: 0; }
+    .cmsg { font-size: 0.8rem; line-height: 1.55; max-width: 82%; padding: 9px 13px; border-radius: 14px; }
+    .cmsg.bot { background: var(--black4); color: var(--white2); border-bottom-left-radius: 4px; align-self: flex-start; }
+    .cmsg.user { background: rgba(0,212,255,0.08); border: 1px solid var(--cyan-border); color: var(--white); border-bottom-right-radius: 4px; align-self: flex-end; }
+    .chat-qr { padding: 9px 14px; display: flex; gap: 6px; flex-wrap: wrap; border-top: 1px solid var(--border); }
+    .qr { background: var(--black4); border: 1px solid var(--border); border-radius: 980px; color: var(--cyan); font-size: 0.68rem; padding: 5px 11px; cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+    .qr:hover { background: rgba(0,212,255,0.08); border-color: var(--cyan-border); }
+    .chat-ir { border-top: 1px solid var(--border); display: flex; }
+    .chat-in { flex: 1; background: transparent; border: none; padding: 13px 15px; color: var(--white); font-family: 'Outfit', sans-serif; font-size: 0.82rem; outline: none; }
+    .chat-in::placeholder { color: var(--white3); }
+    .chat-snd { background: none; border: none; color: var(--cyan); font-size: 1rem; padding: 13px 15px; cursor: pointer; }
+    .chat-btn { width: 50px; height: 50px; border-radius: 50%; background: var(--cyan); border: none; cursor: pointer; display: flex; align-items: center; justify-content: none; justify-content: center; font-size: 1.2rem; box-shadow: 0 0 24px rgba(0,212,255,0.35); transition: transform 0.2s; position: relative; }
+    .chat-btn:hover { transform: scale(1.08); }
+    .cnotif { position: absolute; top: -3px; right: -3px; width: 15px; height: 15px; border-radius: 50%; background: var(--dn); color: white; font-size: 0.55rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.hidden { opacity: 0; transform: translateY(22px); }
+    .reveal.hidden.vis { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .bc.c4, .bc.c8, .bc.c6 { grid-column: span 12; }
+      .sim-inner { grid-template-columns: 1fr; gap: 28px; }
+      .test-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .urgency { flex-direction: column; text-align: center; }
+      section { padding: 80px 24px; }
+      nav { padding: 0 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Apex<span>AI</span></div>
+  <ul>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#perf">Performance</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Get Access</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="badge"><div class="dot"></div>Bot is live — Trading 24/7</div>
+  <h1>The AI that trades<br/><span class="c">forex</span> <span class="d">for you.</span></h1>
+  <p class="hero-sub">Apex AI executes precision trades across global currency markets — consistently delivering 15–20% monthly returns. Fully automated. Zero experience needed.</p>
+  <div class="hero-ctas">
+    <button class="btn-p" onclick="openModal()">Get Started — ₹30,000</button>
+    <button class="btn-g" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="tick"><span class="tp">EUR/USD</span><span class="tv">1.08542</span><span class="tc up">▲ +0.23%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">GBP/USD</span><span class="tv">1.27310</span><span class="tc up">▲ +0.41%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">USD/JPY</span><span class="tv">149.820</span><span class="tc dn">▼ −0.15%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">USD/CHF</span><span class="tv">0.90124</span><span class="tc up">▲ +0.08%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">AUD/USD</span><span class="tv">0.65872</span><span class="tc dn">▼ −0.19%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">NZD/USD</span><span class="tv">0.60230</span><span class="tc up">▲ +0.07%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">USD/CAD</span><span class="tv">1.36540</span><span class="tc up">▲ +0.12%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">EUR/GBP</span><span class="tv">0.85321</span><span class="tc up">▲ +0.09%</span></span>
+    <span style="color:var(--border)">·</span>
+    <!-- duplicate for loop -->
+    <span class="tick"><span class="tp">EUR/USD</span><span class="tv">1.08542</span><span class="tc up">▲ +0.23%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">GBP/USD</span><span class="tv">1.27310</span><span class="tc up">▲ +0.41%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">USD/JPY</span><span class="tv">149.820</span><span class="tc dn">▼ −0.15%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">AUD/USD</span><span class="tv">0.65872</span><span class="tc dn">▼ −0.19%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">USD/CAD</span><span class="tv">1.36540</span><span class="tc up">▲ +0.12%</span></span>
+    <span style="color:var(--border)">·</span>
+    <span class="tick"><span class="tp">NZD/USD</span><span class="tv">0.60230</span><span class="tc up">▲ +0.07%</span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row reveal">
+  <div class="stat">
+    <div class="stat-n" data-target="18.4" data-dec="1"><span>0</span><span class="acc">%</span></div>
+    <div class="stat-l">Avg Monthly Return</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="2400" data-suf="+"><span>0</span></div>
+    <div class="stat-l">Active Users Globally</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="98.7" data-dec="1"><span>0</span><span class="acc">%</span></div>
+    <div class="stat-l">Bot Uptime</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="3"><span>0</span><span class="acc"> Yrs</span></div>
+    <div class="stat-l">Proven Track Record</div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">🔒 SSL Secured</div>
+  <div class="trust-item">📊 Live Trade Reports</div>
+  <div class="trust-item">💳 One-Time Payment</div>
+  <div class="trust-item">🌍 Works Globally</div>
+  <div class="trust-item">⚡ Setup in 24 Hours</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="eyebrow reveal">How It Works</div>
+  <div class="sec-title reveal d1">Four steps to<br/>automated income.</div>
+  <p class="sec-sub reveal d2">No trading degree. No screen-watching. Just consistent, compounding returns.</p>
+  <div class="bento reveal">
+    <div class="bc c4">
+      <div class="bc-num">01 / PURCHASE</div>
+      <div class="bc-icon">💳</div>
+      <h3>Secure Your License</h3>
+      <p>One-time ₹30,000 + GST. Lifetime access, all future updates included. Zero recurring fees, ever.</p>
+      <div class="bc-glow"></div>
+    </div>
+    <div class="bc c8">
+      <div class="bc-num">02 / CONNECT</div>
+      <div class="bc-bignum"><span>24</span>hr</div>
+      <h3>Guided Setup</h3>
+      <p>Our team connects Apex AI to your existing broker account. Works with all MT4/MT5 brokers worldwide. Done in under 30 minutes with full assistance.</p>
+    </div>
+    <div class="bc c8">
+      <div class="bc-num">03 / TRADE</div>
+      <div class="code-block">
+        > SCANNING EUR/USD...<br/>
+        > HIGH PROB SIGNAL [BUY]<br/>
+        > EXECUTING @ 1.08491<br/>
+        <span class="w">> CLOSED +2.3% ✓ PROFIT BOOKED</span>
+      </div>
+      <h3>Bot Goes Live</h3>
+      <p>Apex AI scans forex markets 24/7, identifies high-probability setups, and executes with precision risk management and automatic stop-losses.</p>
+    </div>
+    <div class="bc c4">
+      <div class="bc-num">04 / EARN</div>
+      <div class="bc-icon">📈</div>
+      <h3>Watch it Grow</h3>
+      <p>Monthly reports, live notifications. Average 15–20% every month, compounding over time.</p>
+      <div class="bc-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR -->
+<section id="perf" class="sim-section">
+  <div class="eyebrow reveal ctr">ROI Simulator</div>
+  <div class="sec-title reveal d1 ctr">Calculate your potential.</div>
+  <p class="sec-sub reveal d2 ctr">Enter your capital. See what Apex AI builds it into.</p>
+
+  <div class="urgency reveal" style="margin-top:40px;">
+    <div class="urgency-l">🔥 Only <strong id="slots">11 slots</strong> remaining at this price. Offer expires in:</div>
+    <div class="cd">
+      <div class="cdb"><span class="cdn" id="cdh">08</span><span class="cdl">hrs</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cdb"><span class="cdn" id="cdm">47</span><span class="cdl">min</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cdb"><span class="cdn" id="cds">33</span><span class="cdl">sec</span></div>
+      <button class="btn-p" style="padding:9px 20px;font-size:0.8rem;" onclick="openModal()">Claim Now</button>
+    </div>
+  </div>
+
+  <div class="sim-inner reveal">
+    <div>
+      <div class="sim-label">Starting Capital (₹)</div>
+      <input type="number" class="sim-inp" id="capital" value="100000" oninput="calc()"/>
+      <div class="sim-label">Period: <span style="color:var(--cyan);font-family:'JetBrains Mono',monospace;" id="mval">6</span> months</div>
+      <input type="range" class="sim-slider" id="msl" min="1" max="24" value="6" oninput="document.getElementById('mval').textContent=this.value;calc()"/>
+      <div class="sim-rl"><span>1 mo</span><span>12 mo</span><span>24 mo</span></div>
+    </div>
+    <div>
+      <div class="rcard">
+        <div class="rl">Total Portfolio Value</div>
+        <div class="rv" id="rtot">₹1,79,586</div>
+      </div>
+      <div class="rcard">
+        <div class="rl">Total Profit Earned</div>
+        <div class="rv c" id="rprof">₹79,586</div>
+      </div>
+      <p class="sim-note">Based on 17% avg monthly return. Results may vary. Past performance does not guarantee future returns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="eyebrow reveal ctr">Client Results</div>
+  <div class="sec-title reveal d1 ctr">Real traders.<br/>Real numbers.</div>
+  <div class="test-grid reveal">
+    <div class="tc-card">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">₹2L became ₹3.1L in 3 months. I literally do nothing — the bot runs silently and I check my account once a week to watch it grow. Best ₹30k I ever spent.</p>
+      <div class="tc-author"><div class="tc-av">RK</div><div><div class="tc-name">Rahul Kapoor</div><div class="tc-loc">Mumbai, India</div></div></div>
+    </div>
+    <div class="tc-card">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">Skeptical at first — automated trading felt like a gamble. But the live trade logs won me over completely. 17.3% in month one. Setup was smooth and guided.</p>
+      <div class="tc-author"><div class="tc-av">AS</div><div><div class="tc-name">Aditya Sharma</div><div class="tc-loc">New Delhi, India</div></div></div>
+    </div>
+    <div class="tc-card">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">7 months in. Worst month: 14.8%. Best: 22.1%. The consistency is what impresses me most. Support team replies within hours. Nothing else like Apex AI.</p>
+      <div class="tc-author"><div class="tc-av">PM</div><div><div class="tc-name">Priya Mehta</div><div class="tc-loc">Bangalore, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--black2);border-top:1px solid var(--border);">
+  <div class="eyebrow reveal ctr">Pricing</div>
+  <div class="sec-title reveal d1 ctr">One payment.<br/>Lifetime of returns.</div>
+  <div class="pricing-wrap reveal">
+    <div class="pricing-card">
+      <div class="pricing-pill">Most Popular — Limited Slots</div>
+      <div class="pricing-amt">₹30k</div>
+      <div class="pricing-s">+ 18% GST &nbsp;·&nbsp; One-Time &nbsp;·&nbsp; Lifetime License</div>
+      <div class="pricing-div"></div>
+      <ul class="pricing-features">
+        <li>Apex AI Trading Bot — Full Forex Access</li>
+        <li>24/7 Automated Buy/Sell Execution</li>
+        <li>15–20% Avg Monthly Return Target</li>
+        <li>Live Trade Notifications & Reports</li>
+        <li>1-on-1 Guided Onboarding</li>
+        <li>All Future Updates — Free</li>
+        <li>Priority WhatsApp Support</li>
+        <li>Compatible with All MT4/MT5 Brokers</li>
+      </ul>
+      <button class="btn-p" style="width:100%;padding:17px;border-radius:12px;font-size:0.95rem;" onclick="openModal()">Get Lifetime Access</button>
+      <p class="pricing-g">🔒 Secure checkout &nbsp;·&nbsp; 24hr setup &nbsp;·&nbsp; <strong id="slots2">11 slots left</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="eyebrow reveal ctr">FAQ</div>
+  <div class="sec-title reveal d1 ctr">Questions answered.</div>
+  <div class="faq-wrap reveal">
+    <div class="faq-item">
+      <div class="faq-q">Do I need any trading experience? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Zero. The bot handles everything — scanning, execution, risk management. Our team guides you through the full setup step by step.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which brokers does it support? <div class="faq-ic">+</div></div>
+      <div class="faq-a">All MT4/MT5 compatible brokers globally. We recommend Exness, IC Markets, or FXTM for optimal performance and tight spreads.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the minimum capital to start? <div class="faq-ic">+</div></div>
+      <div class="faq-a">We recommend ₹50,000 minimum trading capital. Higher capital yields better absolute returns — percentage performance stays consistent either way.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are the returns guaranteed? <div class="faq-ic">+</div></div>
+      <div class="faq-a">No returns are legally guaranteed in trading. 15–20% represents our historical monthly average. Markets vary and actual results may differ. We're always transparent about this.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens after I pay? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Confirmation within 2 hours. Our team schedules a setup session and connects the bot to your broker — typically live within 24 hours of payment.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this a subscription or one-time payment? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Completely one-time. Pay once, use forever. No monthly fees, no profit commissions. Every rupee you earn is yours to keep.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Stop watching markets.<br/>Let <span class="c">Apex AI</span> trade them.</h2>
+  <p>Join 2,400+ traders globally who automated their forex income.</p>
+  <button class="btn-p" onclick="openModal()" style="font-size:1rem;padding:17px 48px;">Get Apex AI — ₹30,000</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">Apex<span>AI</span> Trading</span>
+      <p class="footer-desc">Automated forex trading powered by advanced machine learning. Professional-grade tools made accessible to every investor worldwide.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#perf">Performance</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#ef9c9a9f9f809d9baf8e9f8a979b9d8e8b868188c18c80c18681"><span class="__cf_email__" data-cfemail="f4878184849b8680b49584918c808695909d9a93da979bda9d9a">[email&#160;protected]</span></a></li>
+        <li><a href="#">WhatsApp Support</a></li>
+        <li><a href="#">Live Chat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Apex AI Trading · apextrading.co.in</p>
+    <p>Privacy Policy · Terms of Service · Risk Disclaimer</p>
+  </div>
+  <div class="footer-disclaimer">⚠️ Risk Disclaimer: Forex trading involves substantial risk of loss and may not be suitable for all investors. Past performance is not indicative of future results. The 15–20% monthly return figures represent historical averages and are not guaranteed. Only invest capital you can afford to lose. Apex AI Trading is not a SEBI registered investment advisor. Please consult a qualified financial professional before making any investment decisions.</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Claim Your License</h3>
+    <p>Fill in your details — our team will contact you within 2 hours to complete setup.</p>
+    <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"/></div>
+    <div class="fg"><label>WhatsApp Number</label><input type="tel" placeholder="+91 9XXXXXXXXX"/></div>
+    <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com"/></div>
+    <div class="fg"><label>Trading Capital Available</label>
+      <select>
+        <option>₹50,000 – ₹1,00,000</option>
+        <option>₹1,00,000 – ₹5,00,000</option>
+        <option>₹5,00,000 – ₹10,00,000</option>
+        <option>₹10,00,000+</option>
+      </select>
+    </div>
+    <button class="modal-btn" onclick="submitForm()">Submit — Get Access →</button>
+    <p class="modal-secure">🔒 Your information is private and never shared with third parties</p>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div class="chat-wrap">
+  <div class="chat-box" id="chatBox">
+    <div class="chat-head">
+      <div class="chat-head-i">
+        <div class="chat-av">🤖</div>
+        <div><div class="chat-n">Apex Support</div><div class="chat-s">Online now</div></div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="cmsg bot">Hey 👋 Welcome to Apex AI Trading. How can I help you today?</div>
+    </div>
+    <div class="chat-qr">
+      <button class="qr" onclick="qr('Returns?')">Returns?</button>
+      <button class="qr" onclick="qr('How to buy?')">How to buy?</button>
+      <button class="qr" onclick="qr('Is it safe?')">Is it safe?</button>
+      <button class="qr" onclick="qr('Talk to agent')">Talk to agent</button>
+    </div>
+    <div class="chat-ir">
+      <input class="chat-in" id="chatIn" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendMsg()"/>
+      <button class="chat-snd" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+  <button class="chat-btn" onclick="toggleChat()">💬<span class="cnotif" id="cnotif">1</span></button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // CURSOR - simple direct approach
+  (function() {
+    var dot  = document.getElementById('cursor');
+    var ring = document.getElementById('ring');
+    var rx = 0, ry = 0, mx = 0, my = 0, started = false;
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!started) {
+        started = true;
+        dot.style.display  = 'block';
+        ring.style.display = 'block';
+      }
+      dot.style.left = (mx - 4) + 'px';
+      dot.style.top  = (my - 4) + 'px';
+    });
+
+    function loop() {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      ring.style.left = (rx - 17) + 'px';
+      ring.style.top  = (ry - 17) + 'px';
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    document.querySelectorAll('button, a, .faq-q, .qr').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { ring.style.width='50px'; ring.style.height='50px'; });
+      el.addEventListener('mouseleave', function() { ring.style.width='34px'; ring.style.height='34px'; });
+    });
+  })();
+
+  // REVEAL ON SCROLL — JS adds 'hidden' first so content visible without JS
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach(el => el.classList.add('hidden'));
+  const obs = new IntersectionObserver(e => e.forEach(x => {
+    if(x.isIntersecting) { x.target.classList.add('vis'); obs.unobserve(x.target); }
+  }), { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  // Small delay so hidden class is applied before observing
+  setTimeout(() => revealEls.forEach(el => obs.observe(el)), 50);
+
+  // STAT COUNTERS
+  const sObs = new IntersectionObserver(e => e.forEach(x => {
+    if(x.isIntersecting) { x.target.querySelectorAll('[data-target]').forEach(animC); sObs.unobserve(x.target); }
+  }), { threshold: 0.3 });
+  document.querySelectorAll('.stats-row').forEach(el => sObs.observe(el));
+  function animC(el) {
+    const t = parseFloat(el.getAttribute('data-target'));
+    const dec = el.getAttribute('data-dec') === '1';
+    const suf = el.getAttribute('data-suf') || '';
+    const sp = el.querySelector('span');
+    const dur = 1800, s = performance.now();
+    function upd(now) {
+      const p = Math.min((now-s)/dur, 1), e = 1-Math.pow(1-p,3), v = t*e;
+      sp.textContent = (dec ? v.toFixed(1) : Math.floor(v)) + suf;
+      if(p < 1) requestAnimationFrame(upd);
+    }
+    requestAnimationFrame(upd);
+  }
+
+  // COUNTDOWN
+  let end = Date.now() + (8*3600 + 47*60 + 33)*1000;
+  setInterval(() => {
+    const r = Math.max(0, end - Date.now());
+    const h = Math.floor(r/3600000), m = Math.floor((r%3600000)/60000), s = Math.floor((r%60000)/1000);
+    document.getElementById('cdh').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdm').textContent = String(m).padStart(2,'0');
+    document.getElementById('cds').textContent = String(s).padStart(2,'0');
+  }, 1000);
+
+  // SLOTS
+  let sl = 11;
+  setInterval(() => {
+    if(sl > 3 && Math.random() < 0.15) {
+      sl--;
+      document.getElementById('slots').textContent = sl + ' slots';
+      document.getElementById('slots2').textContent = sl + ' slots left';
+    }
+  }, 42000);
+
+  // SIMULATOR
+  function calc() {
+    const c = parseFloat(document.getElementById('capital').value) || 0;
+    const m = parseInt(document.getElementById('msl').value);
+    const tot = c * Math.pow(1.17, m), prof = tot - c;
+    document.getElementById('rtot').textContent = '₹' + Math.round(tot).toLocaleString('en-IN');
+    document.getElementById('rprof').textContent = '₹' + Math.round(prof).toLocaleString('en-IN');
+  }
+  calc();
+
+  // TICKER FLUCTUATION
+  setInterval(() => {
+    document.querySelectorAll('.tv').forEach(el => {
+      const v = parseFloat(el.textContent);
+      if(isNaN(v)) return;
+      el.textContent = (v + (Math.random()-0.5)*0.0003).toFixed(5);
+    });
+  }, 2500);
+
+  // MODAL
+  function openModal() { document.getElementById('modal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeModal() { document.getElementById('modal').classList.remove('active'); document.body.style.overflow = ''; }
+  document.getElementById('modal').addEventListener('click', e => { if(e.target === document.getElementById('modal')) closeModal(); });
+  function submitForm() { alert('🚀 Done! Our team will WhatsApp you within 2 hours to complete your setup.'); closeModal(); }
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement, open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+
+  // CHAT
+  function toggleChat() { document.getElementById('chatBox').classList.toggle('open'); document.getElementById('cnotif').style.display = 'none'; }
+  const bR = {
+    'returns?': "We average 15–20% monthly return based on 3+ years of live trading data. Lowest month on record: 12.1%. Best: 24.3%. No guarantees, but the track record speaks for itself 📈",
+    'how to buy?': "Simple! Click 'Get Access', fill in your details, and our team will WhatsApp you within 2 hours. Payment via UPI, bank transfer, or card. ₹30,000 + GST, completely one-time.",
+    'is it safe?': "Your capital stays in YOUR broker account at all times — we never hold or touch your funds. The bot uses strict stop-losses and automated position sizing. Full transparency with live logs. 🔒",
+    'talk to agent': "Absolutely! Leave your WhatsApp number via the 'Get Access' form and a team member will call you back within 30 minutes ⚡"
+  };
+  function qr(t) { addMsg(t, 'user'); setTimeout(() => addMsg(bR[t.toLowerCase()] || "Great question! Submit your details via 'Get Access' and our team will answer everything personally.", 'bot'), 750); }
+  function sendMsg() { const i = document.getElementById('chatIn'), v = i.value.trim(); if(!v) return; addMsg(v, 'user'); i.value = ''; setTimeout(() => addMsg("Thanks for reaching out! For the fastest response, leave your WhatsApp number via 'Get Access' and our team will call you back 📞", 'bot'), 900);
