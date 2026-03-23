@@ -385,35 +385,36 @@ footer ul li a:hover{color:#00D4FF}
   </div>
 </section>
 
-<!-- TICKER — live forex via Cloudflare Worker -->
+<!-- TICKER — live forex via Frankfurter API -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="tickerTrack">
-    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">1.08542</span> <span class="t-up">▲ +0.00%</span></span>
+    <!-- Initial placeholder content will be replaced by JavaScript -->
+    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">1.27310</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">149.820</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">USD/CHF</span> <span class="t-val">0.90124</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">USD/CHF</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">0.65872</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">NZD/USD</span> <span class="t-val">0.60230</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">NZD/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">1.36540</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">EUR/GBP</span> <span class="t-val">0.85321</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">EUR/GBP</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
     <!-- duplicate for loop -->
-    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">1.08542</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">1.27310</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">149.820</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">0.65872</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
     <span class="t-sep"> · </span>
-    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">1.36540</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">loading...</span> <span class="t-up">▲ 0.00%</span></span>
   </div>
 </div>
 
@@ -603,7 +604,7 @@ footer ul li a:hover{color:#00D4FF}
     <div>
       <h4>Contact</h4>
       <ul>
-        <li><a href="/cdn-cgi/l/email-protection#c9babcb9b9a6bbbd89a8b9acb1bdbba8ada0a7aee7aaa6e7a0a7">support&#64;apextrading.co.in</a></li>
+        <li><a href="mailto:support@apextrading.co.in">support@apextrading.co.in</a></li>
         <li><a href="#">WhatsApp Support</a></li>
         <li><a href="#">Live Chat</a></li>
       </ul>
@@ -660,7 +661,7 @@ footer ul li a:hover{color:#00D4FF}
   <button class="chat-fab" onclick="toggleChat()">💬<span class="chat-notif" id="cnotif">1</span></button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
+<script>
 /* ============================================================
    SCROLL REVEAL
    JS adds 'hidden' class — so content visible without JS
@@ -688,12 +689,17 @@ footer ul li a:hover{color:#00D4FF}
    COUNTDOWN TIMER
    ============================================================ */
 (function initCountdown() {
-  var end = Date.now() + (8 * 3600 + 47 * 60 + 33) * 1000;
+  // Set the initial end time based on the hardcoded values in the HTML
+  var initialEndTime = Date.now() + (8 * 3600 + 47 * 60 + 33) * 1000;
+  var end = initialEndTime;
+
   setInterval(function() {
     var r = Math.max(0, end - Date.now());
     var h = Math.floor(r / 3600000);
     var m = Math.floor((r % 3600000) / 60000);
     var s = Math.floor((r % 60000) / 1000);
+
+    // Update the HTML elements with the calculated time
     document.getElementById('cdh').textContent = String(h).padStart(2, '0');
     document.getElementById('cdm').textContent = String(m).padStart(2, '0');
     document.getElementById('cds').textContent = String(s).padStart(2, '0');
@@ -703,85 +709,185 @@ footer ul li a:hover{color:#00D4FF}
 /* ============================================================
    SLOTS COUNTDOWN
    ============================================================ */
-var slots = 11;
+var slots = 11; // Initial number of slots
+var slotsElement = document.getElementById('slots');
+var slotsElement2 = document.getElementById('slots2');
+
+// Function to update the slot count in the HTML
+function updateSlotsDisplay() {
+  if (slotsElement) {
+    slotsElement.textContent = slots + (slots === 1 ? ' slot' : ' slots');
+  }
+  if (slotsElement2) {
+    slotsElement2.textContent = slots + (slots === 1 ? ' slot left' : ' slots left');
+  }
+}
+
+// Initial display update
+updateSlotsDisplay();
+
+// Interval to randomly decrease the slot count
 setInterval(function() {
+  // Only decrease if there are more than 3 slots and a random chance occurs
   if (slots > 3 && Math.random() < 0.15) {
     slots--;
-    document.getElementById('slots').textContent  = slots + ' slots';
-    document.getElementById('slots2').textContent = slots + ' slots left';
+    updateSlotsDisplay(); // Update the display after decreasing
   }
-}, 42000);
+}, 42000); // Check every 42 seconds
 
 /* ============================================================
-   LIVE FOREX — Cloudflare Worker proxy (no CORS issues)
+   LIVE FOREX — Frankfurter API (Free, No API Key Required)
    ============================================================ */
 (function() {
-  var WORKER = 'https://apexaiaditya.iphonedataaditya.workers.dev';
+  // Using Frankfurter API - Free, no API key needed, reliable ECB data
+  var API_URL = 'https://api.frankfurter.app/latest?from=USD&to=EUR,GBP,JPY,CHF,AUD,NZD,CAD';
+
+  // Array of currency pairs to display in the ticker.
   var pairs = ['EUR/USD','GBP/USD','USD/JPY','USD/CHF','AUD/USD','NZD/USD','USD/CAD','EUR/GBP'];
+
+  // Object to store the previous prices for calculating percentage changes.
   var prevPrices = {};
 
-  function buildHTML(prices) {
-    var html = '';
-    for (var t = 0; t < 2; t++) {
-      pairs.forEach(function(label) {
-        var price = prices[label];
-        if (!price) return;
-        var prev  = prevPrices[label] || price;
-        var pct   = ((price - prev) / prev * 100);
-        var isUp  = pct >= 0;
-        var dec   = label.indexOf('JPY') > -1 ? 3 : 5;
-        html += '<span class="tick">'
-          + '<span class="t-pair">' + label + '</span>'
-          + '<span class="t-val">' + price.toFixed(dec) + '</span>'
-          + '<span class="' + (isUp ? 't-up' : 't-dn') + '">'
-          + (isUp ? '▲' : '▼') + ' ' + (isUp ? '+' : '') + pct.toFixed(2) + '%'
-          + '</span></span>'
-          + '<span class="t-sep"> · </span>';
-      });
-    }
-    return html;
+  /**
+   * Builds the HTML string for a single tick item in the ticker.
+   * @param {string} label - The currency pair label (e.g., 'EUR/USD').
+   * @param {number} price - The current price of the currency pair.
+   * @param {number} prevPrice - The previous price of the currency pair.
+   * @param {number} decimalPlaces - The number of decimal places to format the price.
+   * @returns {string} - The HTML string for the tick.
+   */
+  function buildTickHTML(label, price, prevPrice, decimalPlaces) {
+    var pct = ((price - prevPrice) / prevPrice) * 100;
+    var isUp = pct >= 0;
+    return '<span class="tick">'
+      + '<span class="t-pair">' + label + '</span>'
+      + '<span class="t-val">' + price.toFixed(decimalPlaces) + '</span>'
+      + '<span class="' + (isUp ? 't-up' : 't-dn') + '">'
+      + (isUp ? '▲' : '▼') + ' ' + (isUp ? '+' : '') + pct.toFixed(2) + '%'
+      + '</span></span>';
   }
 
-  function updateTicker(prices) {
+  /**
+   * Updates the ticker with the latest forex rates.
+   * @param {object} rates - An object containing the latest forex rates.
+   */
+  function updateTicker(rates) {
     var track = document.getElementById('tickerTrack');
-    if (track && Object.keys(prices).length > 0) {
-      track.innerHTML = buildHTML(prices);
-      pairs.forEach(function(l) { if (prices[l]) prevPrices[l] = prices[l]; });
+    if (!track || !rates) return;
+
+    var html = '';
+    var currentPrices = {}; // To store prices for the current update
+
+    // Build HTML for each pair, handling potential missing data
+    pairs.forEach(function(label) {
+      var currentPrice = rates[label];
+      var prevPrice = prevPrices[label] || currentPrice; // Use current if no previous
+      var decimalPlaces = label.indexOf('JPY') > -1 ? 3 : 5;
+
+      if (currentPrice !== undefined) {
+        html += buildTickHTML(label, currentPrice, prevPrice, decimalPlaces);
+        html += '<span class="t-sep"> · </span>';
+        currentPrices[label] = currentPrice; // Store for next iteration
+      }
+    });
+
+    // Duplicate the generated HTML to create a seamless loop effect.
+    track.innerHTML = html + html;
+
+    // Update prevPrices for the next fetch cycle.
+    for (var label in currentPrices) {
+      prevPrices[label] = currentPrices[label];
     }
   }
 
+  /**
+   * Fetches the latest forex rates from the Frankfurter API.
+   */
   function fetchRates() {
-    fetch(WORKER)
-      .then(function(r) { return r.json(); })
+    fetch(API_URL)
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
       .then(function(data) {
         var r = data.rates;
-        if (!r) return;
-        updateTicker({
-          'EUR/USD': r.USD,
-          'EUR/GBP': r.GBP,
-          'GBP/USD': parseFloat((r.USD / r.GBP).toFixed(5)),
-          'USD/JPY': parseFloat((r.JPY / r.USD).toFixed(3)),
-          'USD/CHF': parseFloat((r.CHF / r.USD).toFixed(5)),
-          'AUD/USD': parseFloat((r.USD / r.AUD).toFixed(5)),
-          'NZD/USD': parseFloat((r.USD / r.NZD).toFixed(5)),
-          'USD/CAD': parseFloat((r.CAD / r.USD).toFixed(5)),
-        });
+        if (!r) {
+          console.error('API returned no rates:', data);
+          return;
+        }
+
+        // Transform the rates from Frankfurter API format
+        // Frankfurter returns rates from USD base: {EUR: 0.86, GBP: 0.75, JPY: 158...}
+        // We need to calculate cross-rates
+        var transformedRates = {};
+        
+        // Direct conversions from USD
+        transformedRates['EUR/USD'] = 1 / r.EUR; // If USD->EUR is 0.86, then EUR->USD is 1/0.86
+        transformedRates['GBP/USD'] = 1 / r.GBP;
+        transformedRates['USD/JPY'] = r.JPY;
+        transformedRates['USD/CHF'] = r.CHF;
+        transformedRates['AUD/USD'] = 1 / r.AUD;
+        transformedRates['NZD/USD'] = 1 / r.NZD;
+        transformedRates['USD/CAD'] = r.CAD;
+        transformedRates['EUR/GBP'] = r.GBP / r.EUR; // Cross rate
+
+        console.log('✅ Live Forex Rates Updated:', transformedRates);
+        updateTicker(transformedRates);
       })
-      .catch(function(e) { console.log('Ticker fetch failed:', e); });
+      .catch(function(error) {
+        console.error('❌ Ticker fetch failed:', error);
+        // Keep showing loading state or last known prices
+      });
   }
 
+  // Fetch rates immediately on page load.
   fetchRates();
+  // Fetch rates every 60 seconds to keep the ticker updated.
   setInterval(fetchRates, 60000);
 })();
 
 /* ============================================================
    MODAL
    ============================================================ */
-function openModal()  { document.getElementById('modal').classList.add('on');  document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal').classList.remove('on'); document.body.style.overflow = ''; }
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
+/**
+ * Opens the modal by adding the 'on' class and disabling body scroll.
+ */
+function openModal() {
+  var modal = document.getElementById('modal');
+  if (modal) {
+    modal.classList.add('on');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+/**
+ * Closes the modal by removing the 'on' class and re-enabling body scroll.
+ */
+function closeModal() {
+  var modal = document.getElementById('modal');
+  if (modal) {
+    modal.classList.remove('on');
+    document.body.style.overflow = ''; // Re-enable background scrolling
+  }
+}
+
+// Close the modal if the user clicks outside of the modal content.
+var modalBg = document.getElementById('modal');
+if (modalBg) {
+  modalBg.addEventListener('click', function(event) {
+    // Check if the click target is the modal background itself
+    if (event.target === modalBg) {
+      closeModal();
+    }
+  });
+}
+
+/**
+ * Handles the form submission for the modal.
+ * Displays an alert message and closes the modal.
+ */
 function submitForm() {
   alert('🚀 Done! Our team will WhatsApp you within 2 hours to complete your setup.');
   closeModal();
@@ -790,28 +896,110 @@ function submitForm() {
 /* ============================================================
    FAQ ACCORDION
    ============================================================ */
-document.querySelectorAll('.faq-q').forEach(function(q) {
-  q.addEventListener('click', function() {
-    var item = q.parentElement;
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-    if (!isOpen) item.classList.add('open');
+document.querySelectorAll('.faq-q').forEach(function(questionElement) {
+  questionElement.addEventListener('click', function() {
+    var faqItem = questionElement.parentElement; // The parent .faq-item div
+    var isOpen = faqItem.classList.contains('open');
+
+    // Close all other open FAQ items
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+      if (item !== faqItem) {
+        item.classList.remove('open');
+      }
+    });
+
+    // Toggle the 'open' class on the clicked FAQ item
+    if (!isOpen) {
+      faqItem.classList.add('open');
+    }
   });
 });
 
 /* ============================================================
    LIVE CHAT
    ============================================================ */
+/**
+ * Toggles the visibility of the chat box and hides the notification dot.
+ */
 function toggleChat() {
-  document.getElementById('chatBox').classList.toggle('on');
-  document.getElementById('cnotif').style.display = 'none';
+  var chatBox = document.getElementById('chatBox');
+  if (chatBox) {
+    chatBox.classList.toggle('on');
+  }
+  var notifDot = document.getElementById('cnotif');
+  if (notifDot) {
+    notifDot.style.display = 'none'; // Hide notification when chat is opened
+  }
 }
+
+// Predefined chat replies mapped to user input keywords.
 var chatReplies = {
   'returns?':    'Apex AI is built for consistent, profitable trading — verified over 3+ years of live performance. Results vary by market conditions. Your capital always stays in your own broker account 📈',
   'how to buy?': "Click 'Get Access', fill your details, and our team WhatsApps you within 2 hours. ₹30,000 + GST, one-time payment.",
   'is it safe?': 'Your capital stays in YOUR broker account always — we never touch your funds. Strict stop-losses built in. 🔒',
   'talk to agent': "Leave your WhatsApp via 'Get Access' and a team member calls you back within 30 mins ⚡"
 };
-function qr(t) {
-  addMsg(t, 'usr');
-  var reply = chatReplies[t.toLowerCase()] || "Great question! Submit your details via 'Get
+
+/**
+ * Handles a quick reply button click.
+ * Adds the button's text as a user message and gets a bot reply.
+ * @param {string} query - The text from the quick reply button.
+ */
+function qr(query) {
+  addMsg(query, 'usr'); // Add user's message to chat
+  var botReply = chatReplies[query.toLowerCase()] || "I'm not sure how to answer that. Can you please rephrase?"; // Get bot's reply
+  setTimeout(function() { // Simulate typing delay
+    addMsg(botReply, 'bot');
+  }, 500);
+}
+
+/**
+ * Adds a message to the chat log.
+ * @param {string} text - The message content.
+ * @param {'bot' | 'usr'} sender - The sender of the message ('bot' or 'usr').
+ */
+function addMsg(text, sender) {
+  var chatMsgs = document.getElementById('chatMsgs');
+  if (!chatMsgs) return;
+
+  var msgDiv = document.createElement('div');
+  msgDiv.classList.add('cmsg', sender);
+  msgDiv.textContent = text;
+  chatMsgs.appendChild(msgDiv);
+
+  // Scroll to the bottom of the chat
+  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+}
+
+/**
+ * Sends a user message from the input field.
+ */
+function sendMsg() {
+  var input = document.getElementById('chatIn');
+  var message = input.value.trim();
+
+  if (message) {
+    addMsg(message, 'usr'); // Add user message to chat
+    input.value = ''; // Clear the input field
+
+    // Get bot reply based on the message content
+    var botReply = chatReplies[message.toLowerCase()] || "Thanks for your message! Our support team will get back to you shortly.";
+    setTimeout(function() { // Simulate typing delay
+      addMsg(botReply, 'bot');
+    }, 700);
+  }
+}
+
+// Event listener for the Enter key in the chat input.
+var chatInput = document.getElementById('chatIn');
+if (chatInput) {
+  chatInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      sendMsg();
+    }
+  });
+}
+</script>
+</body>
+</html>
+
