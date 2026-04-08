@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Grover FX Trading — Automated Forex Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;cursor:none !important}
+html{scroll-behavior:smooth}
+
+/* ── CURSOR ── */
+#c-dot{
+  position:fixed;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#00D4FF;
+  box-shadow:0 0 10px #00D4FF,0 0 22px rgba(0,212,255,.55);
+  pointer-events:none;
+  z-index:99999;
+  top:0;left:0;
+  opacity:0;
+  transition:opacity .2s;
+}
+#c-ring{
+  position:fixed;
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1.5px solid rgba(0,212,255,.6);
+  pointer-events:none;
+  z-index:99998;
+  top:0;left:0;
+  opacity:0;
+  transition:opacity .2s, width .2s, height .2s, border-color .2s;
+}
+
+/* ── BASE ── */
+body{
+  font-family:'Outfit',sans-serif;
+  background:#000;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,180,255,.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 10% 60%, rgba(0,100,200,.05) 0%, transparent 50%);
+  color:#F5F5F7;
+  overflow-x:hidden;
+  cursor:none !important;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:1000;
+  height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo{font-size:1rem;font-weight:700;letter-spacing:-.02em;color:#F5F5F7}
+.logo span{color:#00D4FF}
+nav ul{list-style:none;display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%)}
+nav ul a{text-decoration:none;color:#A1A1A6;font-size:.78rem;transition:color .2s}
+nav ul a:hover{color:#F5F5F7}
+.nav-btn{background:#00D4FF;color:#000;border:none;padding:7px 18px;border-radius:980px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;transition:opacity .2s,box-shadow .2s}
+.nav-btn:hover{opacity:.85;box-shadow:0 0 20px rgba(0,212,255,.4)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:140px 24px 100px;
+  position:relative;overflow:hidden;
+}
+.hero-orb{
+  position:absolute;
+  width:1000px;height:1000px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,212,255,.18) 0%,rgba(0,150,255,.08) 35%,transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+  animation:orb 10s ease-in-out infinite;
+}
+.hero-orb2{
+  position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,180,255,.1) 0%,transparent 65%);
+  top:20%;right:-100px;
+  pointer-events:none;
+  animation:orb 14s ease-in-out infinite reverse;
+}
+.hero-orb3{
+  position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,100,200,.08) 0%,transparent 65%);
+  bottom:10%;left:-80px;
+  pointer-events:none;
+  animation:orb 18s ease-in-out infinite;
+}
+@keyframes orb{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-52%) scale(1.05)}}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,212,255,.07);
+  border:1px solid rgba(0,212,255,.22);
+  padding:6px 18px;border-radius:980px;
+  font-size:.72rem;font-weight:500;color:#A1A1A6;
+  margin-bottom:28px;
+  animation:fadeUp .8s ease both;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#00E5A0;box-shadow:0 0 8px #00E5A0;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.hero h1{
+  font-size:clamp(3rem,7.5vw,7rem);
+  font-weight:700;
+  line-height:1.04;
+  letter-spacing:-.045em;
+  max-width:880px;
+  margin:0 auto 24px;
+  animation:fadeUp .9s .1s ease both;
+}
+.hero h1 .cyan{color:#00D4FF}
+.hero h1 .dim{font-weight:200;color:#A1A1A6}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.2rem);
+  color:#A1A1A6;font-weight:300;
+  max-width:520px;margin:0 auto 52px;line-height:1.65;
+  animation:fadeUp .9s .2s ease both;
+}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .9s .3s ease both}
+
+.btn-primary{
+  background:#00D4FF;color:#000;border:none;
+  padding:15px 36px;border-radius:980px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;
+  box-shadow:0 0 28px rgba(0,212,255,.28);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{transform:scale(1.03);box-shadow:0 0 50px rgba(0,212,255,.45)}
+.btn-ghost{
+  background:transparent;color:#00D4FF;border:none;
+  padding:15px 36px;border-radius:980px;
+  font-family:'Outfit',sans-serif;font-size:.9rem;
+  transition:color .2s;
+}
+.btn-ghost:hover{color:#F5F5F7}
+.btn-ghost::after{content:' →'}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#000;border:none;padding:15px 28px;border-radius:980px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 24px rgba(37,211,102,.25)}
+.btn-whatsapp:hover{transform:scale(1.03);box-shadow:0 0 40px rgba(37,211,102,.45)}
+
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;padding:13px 0;background:#080808;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.ticker-track{display:flex;gap:40px;width:max-content;animation:tickscroll 35s linear infinite}
+@keyframes tickscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.74rem;white-space:nowrap}
+.t-pair{color:#6E6E73}
+.t-val{color:#F5F5F7;font-weight:500}
+.t-up{color:#00E5A0}
+.t-dn{color:#FF453A}
+.t-sep{color:rgba(255,255,255,.15)}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,.08)}
+.stat{padding:56px 40px;border-right:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;transition:background .3s}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(0,212,255,.025)}
+.stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00D4FF,transparent);transform:scaleX(0);transition:transform .5s}
+.stat:hover::after{transform:scaleX(1)}
+.stat-num{font-size:3.2rem;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px;animation:statIn 1s ease both;}
+.stat:nth-child(1) .stat-num{animation-delay:.1s}
+.stat:nth-child(2) .stat-num{animation-delay:.2s}
+.stat:nth-child(3) .stat-num{animation-delay:.3s}
+.stat:nth-child(4) .stat-num{animation-delay:.4s}
+@keyframes statIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.stat-num .a{color:#00D4FF}
+.stat-lbl{font-size:.75rem;color:#6E6E73}
+
+/* ── TRUST BAR ── */
+.trust{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap;padding:22px 40px;background:#080808;border-bottom:1px solid rgba(255,255,255,.08)}
+.trust-item{font-size:.76rem;color:#6E6E73;display:flex;align-items:center;gap:8px}
+
+/* ── SECTIONS ── */
+section{padding:120px 48px}
+.eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#00D4FF;margin-bottom:14px}
+.sec-title{font-size:clamp(2rem,4vw,3.6rem);font-weight:700;letter-spacing:-.04em;line-height:1.08;max-width:680px}
+.sec-sub{font-size:.95rem;color:#A1A1A6;font-weight:300;line-height:1.7;max-width:460px;margin-top:14px}
+.center{text-align:center;margin:0 auto}
+.center .sec-title,.center .sec-sub{margin-left:auto;margin-right:auto}
+
+/* ── BENTO ── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1200px;margin:56px auto 0}
+.bc{background:#0F0F0F;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:40px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.bc:hover{border-color:rgba(0,212,255,.22);transform:translateY(-2px)}
+.bc.s4{grid-column:span 4}
+.bc.s8{grid-column:span 8}
+.bc-step{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#00D4FF;margin-bottom:20px;letter-spacing:.1em}
+.bc-icon{font-size:2rem;margin-bottom:14px}
+.bc h3{font-size:1.25rem;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;color:#F5F5F7}
+.bc p{font-size:.86rem;color:#6E6E73;line-height:1.65;font-weight:300}
+.bc-glow{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.06) 0%,transparent 70%);bottom:-70px;right:-70px;pointer-events:none}
+.bc-big{font-size:4.5rem;font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:8px;color:#F5F5F7}
+.bc-big span{color:#00D4FF}
+.code-blk{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#00D4FF;line-height:2.2;margin-bottom:14px}
+.code-blk .w{color:#00E5A0}
+
+/* ── URGENCY ── */
+.urgency{
+  background:rgba(0,212,255,.05);
+  border:1px solid rgba(0,212,255,.22);
+  border-radius:14px;padding:18px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  max-width:1100px;margin:0 auto 36px;flex-wrap:wrap;
+}
+.urg-l{font-size:.83rem;color:#A1A1A6}
+.urg-l strong{color:#00D4FF}
+.cd{display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace}
+.cdb{background:#0F0F0F;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:6px 12px;text-align:center}
+.cdn{font-size:1.2rem;color:#00D4FF;font-weight:500;display:block;line-height:1}
+.cdl{font-size:.5rem;color:#6E6E73;letter-spacing:.08em;text-transform:uppercase}
+.cd-sep{color:#6E6E73}
+
+/* ── TESTIMONIALS ── */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:1200px;margin:56px auto 0}
+.tc{background:#0F0F0F;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px;transition:border-color .3s,transform .3s}
+.tc:hover{border-color:rgba(0,212,255,.22);transform:translateY(-4px)}
+.stars{color:#00D4FF;font-size:.78rem;letter-spacing:3px;margin-bottom:18px}
+.tc-text{font-size:.87rem;color:#A1A1A6;line-height:1.7;font-weight:300;margin-bottom:24px}
+.tc-author{display:flex;align-items:center;gap:12px}
+.tc-av{width:38px;height:38px;border-radius:50%;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:600;color:#00D4FF}
+.tc-name{font-size:.83rem;font-weight:600;color:#F5F5F7}
+.tc-loc{font-size:.7rem;color:#6E6E73}
+
+/* ── PRICING ── */
+.pricing-wrap{max-width:520px;margin:56px auto 0}
+.pricing-card{background:#0F0F0F;border:1px solid rgba(0,212,255,.22);border-radius:28px;padding:52px;text-align:center;box-shadow:0 0 100px rgba(0,212,255,.06);position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00D4FF,transparent)}
+.pricing-pill{display:inline-block;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);color:#00D4FF;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:980px;margin-bottom:24px}
+.pricing-amt{font-size:5rem;font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:4px;color:#F5F5F7}
+.pricing-sub{font-size:.8rem;color:#6E6E73;margin-bottom:36px}
+.pricing-div{height:1px;background:rgba(255,255,255,.08);margin:28px 0}
+.pricing-list{text-align:left;list-style:none;margin-bottom:36px}
+.pricing-list li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.86rem;color:#A1A1A6;display:flex;align-items:center;gap:12px;font-weight:300}
+.pricing-list li:last-child{border-bottom:none}
+.pricing-list li::before{content:'✓';color:#00D4FF;font-weight:700;font-size:.78rem;flex-shrink:0}
+.pricing-note{font-size:.72rem;color:#6E6E73;margin-top:16px}
+.pricing-note strong{color:#00D4FF}
+
+/* ── FAQ ── */
+.faq-wrap{max-width:700px;margin:56px auto 0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08)}
+.faq-q{padding:20px 0;font-size:.93rem;font-weight:500;color:#F5F5F7;display:flex;justify-content:space-between;align-items:center;transition:color .2s;letter-spacing:-.01em}
+.faq-q:hover{color:#00D4FF}
+.faq-ic{width:20px;height:20px;border:1px solid rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#6E6E73;flex-shrink:0;transition:all .3s}
+.faq-item.open .faq-ic{border-color:#00D4FF;color:#00D4FF;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;font-size:.86rem;color:#6E6E73;line-height:1.75;font-weight:300;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:20px}
+
+/* ── FINAL CTA ── */
+.final-cta{text-align:center;padding:160px 40px;background:#000;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,212,255,.12) 0%,rgba(0,150,255,.06) 40%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.final-cta h2{font-size:clamp(2.5rem,5vw,4.8rem);font-weight:700;letter-spacing:-.05em;max-width:640px;margin:0 auto 18px;line-height:1.06;color:#F5F5F7}
+.final-cta h2 span{color:#00D4FF}
+.final-cta p{color:#A1A1A6;font-size:.95rem;font-weight:300;margin-bottom:44px}
+
+/* ── FOOTER ── */
+footer{background:#080808;border-top:1px solid rgba(255,255,255,.08);padding:56px 48px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:22px}
+.footer-logo{font-size:1rem;font-weight:700;display:block;margin-bottom:10px;color:#F5F5F7}
+.footer-logo span{color:#00D4FF}
+.footer-desc{font-size:.8rem;color:#6E6E73;line-height:1.7;max-width:260px}
+footer h4{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#6E6E73;margin-bottom:16px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px}
+footer ul li a{text-decoration:none;color:#A1A1A6;font-size:.82rem;font-weight:300;transition:color .2s}
+footer ul li a:hover{color:#00D4FF}
+.footer-btm{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-btm p{font-size:.7rem;color:#6E6E73}
+.footer-disc{font-size:.66rem;color:#6E6E73;line-height:1.6;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;margin-top:10px}
+
+/* ── MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9998;display:none;align-items:center;justify-content:center;backdrop-filter:blur(18px)}
+.modal-bg.on{display:flex}
+.modal-box{background:#0F0F0F;border:1px solid rgba(0,212,255,.22);border-radius:28px;padding:50px 44px;max-width:460px;width:90%;position:relative;animation:mIn .35s ease both;box-shadow:0 0 80px rgba(0,212,255,.07)}
+@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:18px;right:18px;background:#161616;border:1px solid rgba(255,255,255,.08);width:30px;height:30px;border-radius:50%;color:#6E6E73;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+.modal-close:hover{border-color:#00D4FF;color:#00D4FF}
+.modal-box h3{font-size:1.75rem;font-weight:700;letter-spacing:-.04em;margin-bottom:6px;color:#F5F5F7}
+.modal-box>p{font-size:.82rem;color:#6E6E73;margin-bottom:28px;line-height:1.5}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#6E6E73;margin-bottom:7px}
+.fg input,.fg select{width:100%;background:#161616;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#F5F5F7;padding:13px 15px;font-family:'Outfit',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus{border-color:#00D4FF}
+.fg select option{background:#161616}
+.modal-btn{width:100%;background:#00D4FF;color:#000;border:none;padding:15px;border-radius:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.88rem;margin-top:6px;transition:opacity .2s,box-shadow .2s}
+.modal-btn:hover{opacity:.88;box-shadow:0 0 24px rgba(0,212,255,.3)}
+.modal-secure{font-size:.7rem;color:#6E6E73;text-align:center;margin-top:12px}
+
+/* ── CHAT ── */
+.chat-wrap{position:fixed;bottom:26px;right:26px;z-index:9000;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.chat-box{width:330px;background:#0F0F0F;border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.7);display:none;animation:cIn .3s ease}
+.chat-box.on{display:block}
+@keyframes cIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-head{background:#161616;border-bottom:1px solid rgba(255,255,255,.08);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.chat-hi{display:flex;align-items:center;gap:10px}
+.chat-av{width:32px;height:32px;border-radius:50%;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.chat-name{font-size:.85rem;font-weight:600;color:#F5F5F7}
+.chat-status{font-size:.68rem;color:#00E5A0;display:flex;align-items:center;gap:4px}
+.chat-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#00E5A0;animation:blink 2s infinite}
+.chat-x{background:none;border:none;color:#6E6E73;font-size:.9rem}
+.chat-msgs{padding:14px;height:210px;overflow-y:auto;display:flex;flex-direction:column;gap:9px}
+.chat-msgs::-webkit-scrollbar{width:0}
+.cmsg{font-size:.8rem;line-height:1.55;max-width:82%;padding:9px 13px;border-radius:14px}
+.cmsg.bot{background:#161616;color:#A1A1A6;border-bottom-left-radius:4px;align-self:flex-start}
+.cmsg.usr{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);color:#F5F5F7;border-bottom-right-radius:4px;align-self:flex-end}
+.chat-qr{padding:9px 14px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08)}
+.qr{background:#161616;border:1px solid rgba(255,255,255,.08);border-radius:980px;color:#00D4FF;font-size:.68rem;padding:5px 11px;font-family:'Outfit',sans-serif;transition:all .2s}
+.qr:hover{background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.22)}
+.chat-ir{border-top:1px solid rgba(255,255,255,.08);display:flex}
+.chat-in{flex:1;background:transparent;border:none;padding:13px 15px;color:#F5F5F7;font-family:'Outfit',sans-serif;font-size:.82rem;outline:none}
+.chat-in::placeholder{color:#6E6E73}
+.chat-send{background:none;border:none;color:#00D4FF;font-size:1rem;padding:13px 15px}
+.chat-fab{width:50px;height:50px;border-radius:50%;background:#00D4FF;border:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 0 24px rgba(0,212,255,.38);transition:transform .2s;position:relative}
+.chat-fab:hover{transform:scale(1.08)}
+.chat-notif{position:absolute;top:-3px;right:-3px;width:15px;height:15px;border-radius:50%;background:#FF453A;color:#fff;font-size:.55rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ── REVEAL ── */
+.rv-el{opacity:1;transform:none;transition:opacity .75s ease,transform .75s ease}
+.rv-el.hidden{opacity:0;transform:translateY(22px)}
+.rv-el.hidden.show{opacity:1;transform:none}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav ul{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .bc.s4,.bc.s8{grid-column:span 12}
+  
+  .test-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .urgency{flex-direction:column;text-align:center}
+  section{padding:80px 24px}
+  nav{padding:0 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR SCRIPT — runs immediately, before anything else, Cloudflare cannot touch this -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+<script>
+!function(){
+  var d=document.getElementById('c-dot');
+  var r=document.getElementById('c-ring');
+  var mx=0,my=0,rx=0,ry=0,on=false;
+  function move(e){
+    mx=e.clientX; my=e.clientY;
+    d.style.left=(mx-4)+'px';
+    d.style.top=(my-4)+'px';
+    if(!on){on=true;d.style.opacity='1';r.style.opacity='1';}
+  }
+  function loop(){
+    rx+=(mx-rx)*.15; ry+=(my-ry)*.15;
+    r.style.left=(rx-17)+'px';
+    r.style.top=(ry-17)+'px';
+    requestAnimationFrame(loop);
+  }
+  document.addEventListener('mousemove',move,{passive:true});
+  loop();
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('button,a').forEach(function(el){
+      el.addEventListener('mouseenter',function(){r.style.width='50px';r.style.height='50px';r.style.borderColor='rgba(0,212,255,.9)';});
+      el.addEventListener('mouseleave',function(){r.style.width='34px';r.style.height='34px';r.style.borderColor='rgba(0,212,255,.6)';});
+    });
+  });
+}();
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Grover<span>FX</span></div>
+  <ul>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-btn" onclick="openModal()">Get Access</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-orb3"></div>
+  <div class="badge"><div class="badge-dot"></div>Most traders fail due to execution mistakes — this system eliminates that</div>
+  <h1>Structured Forex Trading<br/><span class="dim">System with Guided Execution.</span></h1>
+  <p class="hero-sub">System-based trade setups with step-by-step execution guidance for different market scenarios. Trading success is not just strategy — it's execution discipline.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="openModal()">Get Access to Grover FX System — ₹40,000</button>
+    <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+    <a href="https://wa.me/919958225552?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Grover%20FX%20Trading%20Bot" target="_blank" class="btn-whatsapp">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</section>
+
+<!-- TICKER — live forex via Cloudflare Worker -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">1.08542</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">1.27310</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">149.820</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">USD/CHF</span> <span class="t-val">0.90124</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">0.65872</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">NZD/USD</span> <span class="t-val">0.60230</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">1.36540</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">EUR/GBP</span> <span class="t-val">0.85321</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <!-- duplicate for loop -->
+    <span class="tick"><span class="t-pair">EUR/USD</span> <span class="t-val">1.08542</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">GBP/USD</span> <span class="t-val">1.27310</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">USD/JPY</span> <span class="t-val">149.820</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">AUD/USD</span> <span class="t-val">0.65872</span> <span class="t-up">▲ +0.00%</span></span>
+    <span class="t-sep"> · </span>
+    <span class="tick"><span class="t-pair">USD/CAD</span> <span class="t-val">1.36540</span> <span class="t-up">▲ +0.00%</span></span>
+  </div>
+</div>
+
+<!-- STATS — CSS animated, no JS dependency -->
+<div class="stats" id="statsBlock">
+  <div class="stat">
+    <div class="stat-num">50,000<span class="a">+</span></div>
+    <div class="stat-lbl">Guided Trade Setups</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2,400<span class="a">+</span></div>
+    <div class="stat-lbl">Active Users Globally</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">98.7<span class="a">%</span></div>
+    <div class="stat-lbl">System Accuracy</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3<span class="a"> Yrs</span></div>
+    <div class="stat-lbl">Proven Track Record</div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item">🔒 SSL Secured</div>
+  <div class="trust-item">📹 Step-by-Step Video Guidance</div>
+  <div class="trust-item">💳 One-Time Payment — No Upsells</div>
+  <div class="trust-item">📋 Predefined Execution Rules</div>
+  <div class="trust-item">⚡ Onboarding in 24 Hours</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="eyebrow rv-el">How It Works</div>
+  <div class="sec-title rv-el d1">How It Works</div>
+  <p class="sec-sub rv-el d2">This is not signals or random tips. The system is built on predefined rules that identify high-probability setups. You are guided on when to enter and exit using clear, scenario-based execution instructions.</p>
+  <div class="bento rv-el">
+    <div class="bc s4">
+      <div class="bc-step">01 / SETUP IDENTIFIED</div>
+      <div class="bc-icon">🎯</div>
+      <h3>System Identifies the Trade Setup</h3>
+      <p>The system scans forex markets using fixed, predefined rules and flags high-probability setups — no guesswork, no subjective judgment.</p>
+      <div class="bc-glow"></div>
+    </div>
+    <div class="bc s8">
+      <div class="bc-step">02 / GUIDED EXECUTION</div>
+      <div class="bc-big"><span>You</span></div>
+      <h3>You Execute Using Guided Rules</h3>
+      <p>Step-by-step execution guidance covers every market scenario — precise entry rules, exit rules, and risk parameters. You stay in full control at every step.</p>
+    </div>
+    <div class="bc s8">
+      <div class="bc-step">03 / SCENARIO-BASED</div>
+      <div class="code-blk">> SETUP: EUR/USD BREAKOUT<br/>> ENTRY RULE: DEFINED ✓<br/>> STOP LOSS: SET ✓<br/><span class="w">> SCENARIO GUIDE: LOADED ✓</span></div>
+      <h3>Trades Managed by Predefined Scenarios</h3>
+      <p>Every market scenario is pre-mapped with a clear action plan. No improvisation, no emotion — the system tells you exactly what to do at each stage.</p>
+    </div>
+    <div class="bc s4">
+      <div class="bc-step">04 / VIDEO TRAINING</div>
+      <div class="bc-icon">🎬</div>
+      <h3>Step-by-Step Video Guidance</h3>
+      <p>Includes detailed video guidance covering different market conditions and execution scenarios. Built so you never feel lost — regardless of your experience level.</p>
+      <div class="bc-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING STATEMENT -->
+<div style="background:#080808;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:32px 48px;text-align:center">
+  <p style="font-size:1rem;font-weight:500;color:#F5F5F7;letter-spacing:-.01em;max-width:700px;margin:0 auto">
+    <span style="color:#00D4FF">Not built for passive income seekers</span> — designed for disciplined execution. This system removes emotional decision-making and inconsistent execution from your trading.
+  </p>
+</div>
+
+<!-- URGENCY BANNER — moved here after removing simulator -->
+<div style="padding:0 48px 0">
+  <div class="urgency rv-el" style="margin:0 auto 0">
+    <div class="urg-l">🔥 Only <strong id="slots">11 slots</strong> remaining at this price. Offer expires in:</div>
+    <div class="cd">
+      <div class="cdb"><span class="cdn" id="cdh">08</span><span class="cdl">hrs</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cdb"><span class="cdn" id="cdm">47</span><span class="cdl">min</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cdb"><span class="cdn" id="cds">33</span><span class="cdl">sec</span></div>
+      <button class="btn-primary" style="padding:9px 20px;font-size:.8rem" onclick="openModal()">Claim Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="eyebrow rv-el center">Client Results</div>
+  <div class="sec-title rv-el d1 center">Real traders.<br/>Real results.</div>
+  <div class="test-grid rv-el">
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">The system is crystal clear — I know exactly when to enter and exit. No more guessing. The video guidance for different scenarios is what really made the difference for me.</p>
+      <div class="tc-author"><div class="tc-av">RK</div><div><div class="tc-name">Rahul Kapoor</div><div class="tc-loc">Mumbai, India</div></div></div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">I was skeptical of signals and tips. This is different — it is a structured system with rules. The scenario-based guidance means I always know what to do regardless of market conditions.</p>
+      <div class="tc-author"><div class="tc-av">AS</div><div><div class="tc-name">Aditya Sharma</div><div class="tc-loc">New Delhi, India</div></div></div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">7 months into the system. The rule-based approach removed all the emotional decisions from my trading. Support team is excellent — they actually explain the reasoning behind every rule.</p>
+      <div class="tc-author"><div class="tc-av">PM</div><div><div class="tc-name">Priya Mehta</div><div class="tc-loc">Bangalore, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:#080808;border-top:1px solid rgba(255,255,255,.08)">
+  <div class="eyebrow rv-el center">Pricing</div>
+  <div class="sec-title rv-el d1 center">One payment.<br/>Lifetime access.</div>
+  <p class="sec-sub rv-el center" style="text-align:center;margin:12px auto 0;color:#6E6E73">Typical cost of professional trading systems: <span style="text-decoration:line-through;color:#FF453A">₹1,00,000+</span></p>
+  <div class="pricing-wrap rv-el">
+    <div class="pricing-card">
+      <div class="pricing-pill">Limited Onboarding Slots Available</div>
+      <div class="pricing-amt">₹40k</div>
+      <div class="pricing-sub">One-Time Access · GST Included · Lifetime License</div>
+      <p style="font-size:.78rem;color:#00D4FF;margin-top:8px;letter-spacing:.02em">No monthly fees. No upsells.</p>
+      <div class="pricing-div"></div>
+      <ul class="pricing-list">
+        <li>Grover FX Structured Trading System</li>
+        <li>Full Execution Guidance — Entry, Exit & Stop Rules</li>
+        <li>Step-by-step Video Training for All Market Scenarios</li>
+        <li>Rule-based Trading with Strict Risk Management</li>
+        <li>1-on-1 Guided Onboarding Session</li>
+        <li>All Future System Updates — Free</li>
+        <li>Priority WhatsApp Support</li>
+        <li>Works with All Major Forex Brokers</li>
+      </ul>
+      <button class="btn-primary" style="width:100%;padding:17px;border-radius:12px;font-size:.95rem" onclick="openModal()">Get Access to Grover FX System</button>
+      <p class="pricing-note">⚡ Limited onboarding slots to maintain support quality &nbsp;·&nbsp; <strong id="slots2" style="color:#00D4FF">11 slots remaining</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="eyebrow rv-el center">FAQ</div>
+  <div class="sec-title rv-el d1 center">Questions answered.</div>
+  <div class="faq-wrap rv-el">
+    <div class="faq-item">
+      <div class="faq-q">Do I need trading experience to use this system? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Some basic familiarity with forex trading is helpful, but not required. The system includes full video guidance and a step-by-step onboarding session that walks you through everything from setup to trade execution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which brokers does it support? <div class="faq-ic">+</div></div>
+      <div class="faq-a">All MT4/MT5 compatible brokers globally. We recommend Exness, IC Markets, or FXTM for optimal performance and tight spreads.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the minimum capital to start? <div class="faq-ic">+</div></div>
+      <div class="faq-a">We recommend ₹50,000 minimum trading capital. Higher capital yields better absolute returns while percentage stays consistent.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this system guaranteed to make me money? <div class="faq-ic">+</div></div>
+      <div class="faq-a">No. Trading involves risk and results are never guaranteed. This system focuses on structured, rule-based execution — not guaranteed outcomes. What it gives you is a consistent, disciplined framework. The rest depends on execution and market conditions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens after I pay? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Confirmation within 2 hours. Our team schedules a 1-on-1 onboarding session and walks you through the full system, execution rules, and video training. You will be ready to execute your first trade with confidence — typically within 24 hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this a subscription or one-time? <div class="faq-ic">+</div></div>
+      <div class="faq-a">Completely one-time. Pay once, use forever. No hidden fees, no profit commissions. Every rupee you earn is yours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Stop guessing.<br/>Trade with a <span>structured system.</span></h2>
+  <p>Join 2,400+ traders globally using structured, rule-based execution to trade with discipline.</p>
+  <button class="btn-primary" onclick="openModal()" style="font-size:1rem;padding:17px 48px">Get Access to Grover FX System</button>
+  <p style="margin-top:14px;font-size:.82rem;color:#A1A1A6">Includes system + execution framework + video guidance</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">Grover<span>FX</span> Trading</span>
+      <p class="footer-desc">A structured forex trading system built on predefined rules, guided execution, and strict risk management. Built for disciplined traders.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#c9babcb9b9a6bbbd89a8b9acb1bdbba8ada0a7aee7aaa6e7a0a7">support&#64;apextrading.co.in</a></li>
+        <li><a href="#">WhatsApp Support</a></li>
+        <li><a href="#">Live Chat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <p>© 2026 Grover FX Trading · apextrading.co.in</p>
+    <p>Privacy Policy · Terms · Disclaimer</p>
+  </div>
+  <div class="footer-disc">⚠️ Risk Disclaimer: Trading involves risk. This system focuses on structured execution, not guaranteed outcomes. Forex trading involves substantial risk of loss and is not suitable for all investors. Past performance is not indicative of future results. Only invest capital you can afford to lose. Grover FX Trading is not a SEBI registered investment advisor. Consult a qualified financial professional before making any investment decisions.</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Get Grover FX System</h3>
+    <p>Our team contacts you within 2 hours to schedule your onboarding session. Includes system + execution framework + video guidance.</p>
+    <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"/></div>
+    <div class="fg"><label>WhatsApp Number</label><input type="tel" placeholder="+91 9XXXXXXXXX"/></div>
+    <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com"/></div>
+    <div class="fg"><label>Trading Capital Available</label>
+      <select><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000 – ₹5,00,000</option><option>₹5,00,000 – ₹10,00,000</option><option>₹10,00,000+</option></select>
+    </div>
+    <button class="modal-btn" onclick="submitForm()">Submit — Get Access →</button>
+    <p class="modal-secure">🔒 Your information is private and never shared</p>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div class="chat-wrap">
+  <div class="chat-box" id="chatBox">
+    <div class="chat-head">
+      <div class="chat-hi">
+        <div class="chat-av">🤖</div>
+        <div><div class="chat-name">Grover FX Support</div><div class="chat-status">Online now</div></div>
+      </div>
+      <button class="chat-x" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="cmsg bot">Hey 👋 Welcome to Grover FX Trading. Ask me anything about the system, execution guidance, or how to get started.</div>
+    </div>
+    <div class="chat-qr">
+      <button class="qr" onclick="qr('Returns?')">Returns?</button>
+      <button class="qr" onclick="qr('How to buy?')">How to buy?</button>
+      <button class="qr" onclick="qr('Is it safe?')">Is it safe?</button>
+      <button class="qr" onclick="qr('Talk to agent')">Agent</button>
+    </div>
+    <div class="chat-ir">
+      <input class="chat-in" id="chatIn" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendMsg()"/>
+      <button class="chat-send" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+  <button class="chat-fab" onclick="toggleChat()">💬<span class="chat-notif" id="cnotif">1</span></button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
+/* ============================================================
+   SCROLL REVEAL
+   JS adds 'hidden' class — so content visible without JS
+   ============================================================ */
+(function initReveal() {
+  var els = document.querySelectorAll('.rv-el');
+  // Add hidden class via JS so no-JS users still see content
+  els.forEach(function(el) { el.classList.add('hidden'); });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  setTimeout(function() {
+    els.forEach(function(el) { observer.observe(el); });
+  }, 100);
+})();
+
+/* ============================================================
+   COUNTDOWN TIMER
+   ============================================================ */
+(function initCountdown() {
+  var end = Date.now() + (8 * 3600 + 47 * 60 + 33) * 1000;
+  setInterval(function() {
+    var r = Math.max(0, end - Date.now());
+    var h = Math.floor(r / 3600000);
+    var m = Math.floor((r % 3600000) / 60000);
+    var s = Math.floor((r % 60000) / 1000);
+    document.getElementById('cdh').textContent = String(h).padStart(2, '0');
+    document.getElementById('cdm').textContent = String(m).padStart(2, '0');
+    document.getElementById('cds').textContent = String(s).padStart(2, '0');
+  }, 1000);
+})();
+
+/* ============================================================
+   SLOTS COUNTDOWN
+   ============================================================ */
+var slots = 11;
+setInterval(function() {
+  if (slots > 3 && Math.random() < 0.15) {
+    slots--;
+    document.getElementById('slots').textContent  = slots + ' slots';
+    document.getElementById('slots2').textContent = slots + ' slots left';
+  }
+}, 42000);
+
+/* ============================================================
+   LIVE FOREX — Cloudflare Worker proxy (no CORS issues)
+   ============================================================ */
+(function() {
+  var WORKER = 'https://apexaiaditya.iphonedataaditya.workers.dev';
+  var pairs = ['EUR/USD','GBP/USD','USD/JPY','USD/CHF','AUD/USD','NZD/USD','USD/CAD','EUR/GBP'];
+  var prevPrices = {};
+
+  function buildHTML(prices) {
+    var html = '';
+    for (var t = 0; t < 2; t++) {
+      pairs.forEach(function(label) {
+        var price = prices[label];
+        if (!price) return;
+        var prev  = prevPrices[label] || price;
+        var pct   = ((price - prev) / prev * 100);
+        var isUp  = pct >= 0;
+        var dec   = label.indexOf('JPY') > -1 ? 3 : 5;
+        html += '<span class="tick">'
+          + '<span class="t-pair">' + label + '</span>'
+          + '<span class="t-val">' + price.toFixed(dec) + '</span>'
+          + '<span class="' + (isUp ? 't-up' : 't-dn') + '">'
+          + (isUp ? '▲' : '▼') + ' ' + (isUp ? '+' : '') + pct.toFixed(2) + '%'
+          + '</span></span>'
+          + '<span class="t-sep"> · </span>';
+      });
+    }
+    return html;
+  }
+
+  function updateTicker(prices) {
+    var track = document.getElementById('tickerTrack');
+    if (track && Object.keys(prices).length > 0) {
+      track.innerHTML = buildHTML(prices);
+      pairs.forEach(function(l) { if (prices[l]) prevPrices[l] = prices[l]; });
+    }
+  }
+
+  function parseRates(data) {
+    var r = data.rates;
+    if (!r) return;
+
+    // USD base (from open.er-api.com)
+    if (data.base === 'USD') {
+      updateTicker({
+        'EUR/USD': parseFloat((1 / r.EUR).toFixed(5)),
+        'GBP/USD': parseFloat((1 / r.GBP).toFixed(5)),
+        'USD/JPY': parseFloat(r.JPY.toFixed(3)),
+        'USD/CHF': parseFloat(r.CHF.toFixed(5)),
+        'AUD/USD': parseFloat((1 / r.AUD).toFixed(5)),
+        'NZD/USD': parseFloat((1 / r.NZD).toFixed(5)),
+        'USD/CAD': parseFloat(r.CAD.toFixed(5)),
+        'EUR/GBP': parseFloat((r.GBP / r.EUR).toFixed(5)),
+      });
+    } else {
+      // EUR base (from frankfurter fallback)
+      updateTicker({
+        'EUR/USD': parseFloat(r.USD.toFixed(5)),
+        'EUR/GBP': parseFloat(r.GBP.toFixed(5)),
+        'GBP/USD': parseFloat((r.USD / r.GBP).toFixed(5)),
+        'USD/JPY': parseFloat((r.JPY / r.USD).toFixed(3)),
+        'USD/CHF': parseFloat((r.CHF / r.USD).toFixed(5)),
+        'AUD/USD': parseFloat((r.USD / r.AUD).toFixed(5)),
+        'NZD/USD': parseFloat((r.USD / r.NZD).toFixed(5)),
+        'USD/CAD': parseFloat((r.CAD / r.USD).toFixed(5)),
+      });
+    }
+  }
+
+  function fetchRates() {
+    fetch(WORKER)
+      .then(function(r) { return r.json(); })
+      .then(parseRates)
+      .catch(function(e) { console.log('Ticker fetch failed:', e); });
+  }
+
+  fetchRates();
+  setInterval(fetchRates, 300000); // refresh every 5 minutes
+})();
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal()  { document.getElementById('modal').classList.add('on');  document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('on'); document.body.style.overflow = ''; }
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+function submitForm() {
+  alert('🚀 Done! Our team will WhatsApp you within 2 hours to complete your setup.');
+  closeModal();
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ============================================================
+   LIVE CHAT
+   ============================================================ */
+function toggleChat() {
+  document.getElementById('chatBox').classList.toggle('on');
+  document.getElementById('cnotif').style.display = 'none';
+}
+var chatReplies = {
+  'returns?':    'Grover FX is a structured trading system — results depend on your execution and market conditions. There are no guaranteed returns. The system gives you the rules and guidance; disciplined execution over time creates the edge 📈',
+  'how to buy?': "Click 'Get Access', fill your details, and our team WhatsApps you within 2 hours. ₹40,000 + GST, one-time payment.",
+  'is it safe?': 'Your capital stays in YOUR broker account at all times — we never access your funds. The system uses predefined stop-loss rules and strict risk parameters on every trade. 🔒',
+  'talk to agent': "Leave your WhatsApp via 'Get Access' and a team member calls you back within 30 mins ⚡"
+};
+function qr(t) {
+  addMsg(t, 'usr');
+  var reply = chatReplies[t.toLowerCase()] || "Great question! Submit your details via 'Get
